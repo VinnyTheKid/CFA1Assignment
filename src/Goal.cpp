@@ -5,9 +5,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-Goal::Goal(   const ngl::Vec3 _pos)
+Goal::Goal()
 {
-        m_pos = _pos;
+        m_pos = (0,0,0);
         m_r = 0.2;
         m_source= "models/goal.obj";
         m_mesh = new ngl::Obj(m_source);
@@ -36,7 +36,7 @@ void Goal::draw(const std::string &_shader, ngl::Camera *_cam )
     m_mesh->draw();
 }
 
-ngl::Vec3 Goal::generatePos(   const ngl::Real _boxWidth, const ngl::Real _boxHeight, const ngl::Real _boxDepth)
+void Goal::generatePos(   const ngl::Real _boxWidth, const ngl::Real _boxHeight, const ngl::Real _boxDepth)
 {
     int wallNo = rand() % 3 + 1;
     ngl::Vec3 newGoalPos;
@@ -56,7 +56,7 @@ ngl::Vec3 Goal::generatePos(   const ngl::Real _boxWidth, const ngl::Real _boxHe
 
         y = b; z = c;
         newGoalPos = (x, y, z);
-        return newGoalPos;
+        m_pos = newGoalPos;
     }
     else if(wallNo ==2)
     {
@@ -74,7 +74,7 @@ ngl::Vec3 Goal::generatePos(   const ngl::Real _boxWidth, const ngl::Real _boxHe
 
         x = a; y = b;
         newGoalPos = (x, y, z);
-        return newGoalPos;
+        m_pos = newGoalPos;
     }
     else
     {
@@ -92,6 +92,6 @@ ngl::Vec3 Goal::generatePos(   const ngl::Real _boxWidth, const ngl::Real _boxHe
 
         y = b; z = c;
         newGoalPos = (x, y, z);
-        return newGoalPos;
+        m_pos = newGoalPos;
     }
 }

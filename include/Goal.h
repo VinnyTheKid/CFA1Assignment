@@ -10,13 +10,13 @@
 class Goal
 {
 public:
-    Goal(   const ngl::Vec3 _pos);
+    Goal();
     void setPosition (ngl::Vec3 _pos);
     inline ngl::Vec3 getPosition(){return m_pos;}
     void setRadius (    const ngl::Real _r);
     inline ngl::Real getRadius(){return m_r;}
     void draw(const std::string &_shader, ngl::Camera *_cam );
-    ngl::Vec3 generatePos(   const ngl::Real _boxWidth, const ngl::Real _boxHeight, const ngl::Real _boxDepth);//this includes setting the orientation needed depending on the wall chosen
+    void generatePos(   const ngl::Real _boxWidth, const ngl::Real _boxHeight, const ngl::Real _boxDepth);//this includes setting the orientation needed depending on the wall chosen
 
 private:
     ngl::Vec3 m_pos;
