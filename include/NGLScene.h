@@ -25,7 +25,7 @@
 /// @brief our main glwindow widget for NGL applications all drawing elements are
 /// put in this file
 //----------------------------------------------------------------------------------------------------------------------
-const static float s_batUpdate=0.2;
+const static float s_batUpdate=0.2f;
 const static ngl::Real s_batPushDistance = 0.5;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ private:
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief flag to indicate if the Left mouse button is pressed
     //----------------------------------------------------------------------------------------------------------------------
-    bool m_batPush;
+    //bool m_batPush;
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief the previous x mouse value
     //----------------------------------------------------------------------------------------------------------------------
@@ -112,7 +112,7 @@ private:
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief a pointer to an instance of the Ball class
     //----------------------------------------------------------------------------------------------------------------------
-    Bat *m_bat;
+    //Bat *m_bat;
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief a pointer to an instance of the Bat class
     //----------------------------------------------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ private:
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief a pointer to an instance of the Box class
     //----------------------------------------------------------------------------------------------------------------------
-    Goal *m_goal;
+    //Goal *m_goal;
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief a pointer to an instance of the Goal class
     //----------------------------------------------------------------------------------------------------------------------
@@ -173,7 +173,7 @@ private:
     /// inherited from QObject and overridden here.
     /// @param _event the Qt Event structure
     //----------------------------------------------------------------------------------------------------------------------
-    void drawScene(   const Game::GameState _gameState, const std::string &_shader);
+    //void drawScene(   const Game::GameState _gameState, const std::string &_shader);
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief this method is called to draw the entire current scene depending on gameState
     /// @param _shader the shader used to draw
@@ -183,7 +183,7 @@ private:
     /// @brief this method is called to draw the entire current scene depending on gameState
     /// @param _shader the shader used to draw
     //----------------------------------------------------------------------------------------------------------------------
-    void updateBat();
+   // void updateBat();
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief this method updates the attributes of the bat: the position based on mouse movement and
     /// the orientation based on the balls position
@@ -193,22 +193,22 @@ private:
     /// @brief this method updates the ball position based on its velcity and the changes
     /// in velocity due to a collisions
     //----------------------------------------------------------------------------------------------------------------------
-    void wallCollision();
+    //void wallCollision();
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief this method detects collisions with the walls of the box and performs the
     /// appropriate action depending on where the collision occurs
     //----------------------------------------------------------------------------------------------------------------------
-    void batCollision();
+    //void batCollision();
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief this method detects a collision between the ball and bat and alters the
     /// ball's velocity based on the bat's normal
     //----------------------------------------------------------------------------------------------------------------------
-    void goalCollision();
+    //void goalCollision();
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief this method detects whether the ball has collided with a goal, and if so
     /// increases the score and tells both ball and goal to generate new attributes
     //----------------------------------------------------------------------------------------------------------------------
-    void gameOver();
+    //void gameOver();
 };
 
 

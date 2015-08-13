@@ -95,9 +95,9 @@ ngl::Vec3 Ball::generateVel()
 {
     ngl::Real minX, maxX, minY, maxY, minZ, maxZ, x, y, z;
 
-    minX = -0.04; maxX = 0.04; //TO BE ALTERED TO MAKE WORK IN TESTING
-    minY = -0.1; maxY = 0.1;
-    minZ = -0.02; maxZ = 0.02;
+    minX = -0.04f; maxX = 0.04f; //TO BE ALTERED TO MAKE WORK IN TESTING
+    minY = -0.1f; maxY = 0.1f;
+    minZ = -0.02f; maxZ = 0.02f;
 
 
     float a = minX + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(maxX - minX));
