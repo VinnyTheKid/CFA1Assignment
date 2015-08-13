@@ -69,7 +69,7 @@ void NGLScene::initialize()
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_MULTISAMPLE);
-    glDisable(GL_CULL_FACE);
+    //glDisable(GL_CULL_FACE);
     //shader setup
     ngl::ShaderLib *shader=ngl::ShaderLib::instance();
 
