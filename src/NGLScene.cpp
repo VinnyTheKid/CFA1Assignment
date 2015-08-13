@@ -3,11 +3,11 @@
 
 #include "NGLScene.h"
 #include "Ball.h"
-#include "Bat.h"
-#include "Goal.h"
-#include "Game.h"
-#include "Box.h"
-#include "Menu.h"
+//#include "Bat.h"
+//#include "Goal.h"
+//#include "Game.h"
+//#include "Box.h"
+//#include "Menu.h"
 #include <ngl/Camera.h>
 #include <ngl/Light.h>
 #include <ngl/Material.h>
@@ -17,8 +17,8 @@
 #include <ngl/ShaderLib.h>
 #include <cstdlib>
 #include <iostream>
-#include <QString>
-#include <time.h>
+//#include <QString>
+//#include <time.h>
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -28,6 +28,7 @@ NGLScene::NGLScene(QWindow *_parent) : OpenGLWindow(_parent)
     // re-size the widget to that of the parent (in this case the GLFrame passed in on construction)
     setTitle("Dink!");
     m_redrawTimer=startTimer(20);
+    m_ballUpdateTimer = startTimer(10);
     // now clear the key set
     m_keysPressed.clear();
 
@@ -130,7 +131,7 @@ void NGLScene::initialize()
     //m_dink = new Game();
     //setupGameState(Game::STARTSCREEN);
 
-    srand (static_cast <unsigned> (time(0)));
+    //srand (static_cast <unsigned> (time(0)));
     ngl::Material m(ngl::GOLD);
     m.loadToShader("material");
 
@@ -139,9 +140,7 @@ void NGLScene::initialize()
 //    m.set(m_ball->getMaterial());
 //    m.loadToShader("material");
       m_ball = new Ball();
-      m_ball->setPosition((0,20,0));
-      m_ball->setVelocity((0,0,0));
-      m_ballUpdateTimer = startTimer(20);
+
 
     //m_ball->setPosition(m_ball->generatePos(m_box->getWidth(),m_box->getHeight(),m_box->getDepth()));
    // m_ball->setVelocity(m_ball->generateVel());
@@ -176,8 +175,8 @@ void NGLScene::render()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     //drawScene(m_dink->getGameState(),"Phong");
-    ngl::ShaderLib *shader=ngl::ShaderLib::instance();
-    (*shader)["TextureShader"]->use();
+    //ngl::ShaderLib *shader=ngl::ShaderLib::instance();
+    //(*shader)["TextureShader"]->use();
 
     //ngl::Material m(ngl::CHROME);
     //m.loadToShader("material");
@@ -553,19 +552,15 @@ void NGLScene::updateBall()
 
 
 
-//    ngl::Real gravityIncrement = 0.1f;
-//    ngl::Vec3 oldVel = m_ball->getVelocity();
-//    ngl::Vec3 newVel = (oldVel.m_x, oldVel.m_y - gravityIncrement, oldVel.m_z);
-//    m_ball->setVelocity(newVel);
+    ngl::Real gravityIncrement = 0.1f;
+    ngl::Vec3 oldVel = m_ball->getVelocity();
+    ngl::Vec3 newVel = (oldVel.m_x, (oldVel.m_y - gravityIncrement), oldVel.m_z);
+    m_ball->setVelocity(newVel);
 
-//    ngl::Vec3 oldPos = m_ball->getPosition();
-//    ngl::Vec3 newPos = oldPos + newVel;
-//    m_ball->setPosition(newPos);
+    ngl::Vec3 oldPos = m_ball->getPosition();
+    ngl::Vec3 newPos = (oldPos + newVel);
+    m_ball->setPosition(newPos);
 
-
-    ngl::Vec3 ballPos = m_ball->getPosition();
-    ngl::Vec3 ballV = m_ball->getVelocity();
-    m_ball->setPosition(ballPos+ballV);
 
 
 

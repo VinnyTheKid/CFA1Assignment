@@ -7,12 +7,12 @@
 
 Ball::Ball()
     {
-        m_pos = (0,0,0);
-        m_r= 0.5;
+        m_pos = ngl::Vec3(0,0,0);
+        m_r= 0.5f;
         m_source = "models/ball.obj";
         m_mesh = new ngl::Obj(m_source);
         m_mesh->createVAO();
-        m_v = (0,0,0);
+        m_v = ngl::Vec3(0,0,0);
 
         ngl::Colour _amb(0.9f,0.9f,0.9f);
         ngl::Colour _dif(1.0f,1.0f,1.0f);
