@@ -38,7 +38,7 @@ void Ball::draw(const std::string &_shader,  ngl::Camera *_cam )
 }
 
 
-ngl::Vec3 Ball::batDeflect(ngl::Vec3 m_batNormal)
+void Ball::batDeflect(ngl::Vec3 m_batNormal)
 {
     //changes the velocity of the ball when colliding with the bat
 
@@ -76,35 +76,43 @@ ngl::Vec3 Ball::batDeflect(ngl::Vec3 m_batNormal)
     ngl::Vec3 m_vNew = m_v*deflectionMatrix;
 
     //return the new ball velocity
-    return m_vNew;
+    m_v = m_vNew;
 }
 
-ngl::Vec3 Ball::generatePos(   const ngl::Real _boxWidth, const ngl::Real _boxHeight, const ngl::Real _boxDepth)
+void Ball::generatePos()
 {
-    ngl::Real minX, maxX, x, y, z;
-    minX = m_r - _boxWidth; maxX = _boxWidth - m_r;
-    float a = minX + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(maxX - minX));
+    ngl::Real x, y, z;
+    x = Ball::generateFloat(-4,4);
+    y = -4.25;
+    z = 14;
+    m_pos = ngl::Vec3(x,y,z);
 
-
-    x = a; y = m_r-_boxHeight; z = _boxDepth * 0.5;
-    ngl::Vec3 newBallPos = (x, y, z);
-    return newBallPos;
 }
 
-ngl::Vec3 Ball::generateVel()
+void Ball::generateVel()
 {
-    ngl::Real minX, maxX, minY, maxY, minZ, maxZ, x, y, z;
+    m_v = ngl::Vec3(0,0,0);
+    ngl::Real x, y, z;
+    float minX, maxX, minY, maxY, minZ, maxZ;
 
-    minX = -0.04f; maxX = 0.04f; //TO BE ALTERED TO MAKE WORK IN TESTING
-    minY = -0.1f; maxY = 0.1f;
-    minZ = -0.02f; maxZ = 0.02f;
+    minX = 0; maxX = 0; //SOMETHINGS WRONG HERE
+    minY = 0.4; maxY = 0.55;
+    minZ = -0.6; maxZ = -0.8;
 
+    float a = generateFloat(minX,maxX);
+    float b = generateFloat(minY,maxY);
+    float c = generateFloat(minZ,maxZ);
 
-    float a = minX + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(maxX - minX));
-    float b = minY + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(maxY - minY));
-    float c = minZ + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(maxZ - minZ));
-
-    x = a; y = b; z = c;
-    ngl::Vec3 newBallVel = (x, y, z);
-    return newBallVel;
+    x = (ngl::Real)a; y = (ngl::Real)b; z = (ngl::Real)c;
+    m_v = ngl::Vec3(x,y,z);
 }
+
+
+float Ball::generateFloat(const float _min,const float _max)
+{
+    float random = ((float) rand()) / (float) RAND_MAX;
+    float r = random * (_min - _max);
+    return _min + r;
+}
+
+

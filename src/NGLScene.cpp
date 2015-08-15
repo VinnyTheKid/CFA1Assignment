@@ -3,10 +3,10 @@
 
 #include "NGLScene.h"
 #include "Ball.h"
-//#include "Bat.h"
-//#include "Goal.h"
+#include "Bat.h"
+#include "Goal.h"
 //#include "Game.h"
-//#include "Box.h"
+#include "Box.h"
 //#include "Menu.h"
 #include <ngl/Camera.h>
 #include <ngl/Light.h>
@@ -18,7 +18,7 @@
 #include <cstdlib>
 #include <iostream>
 //#include <QString>
-//#include <time.h>
+//#include <ctime>
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -28,7 +28,12 @@ NGLScene::NGLScene(QWindow *_parent) : OpenGLWindow(_parent)
     // re-size the widget to that of the parent (in this case the GLFrame passed in on construction)
     setTitle("Dink!");
     m_redrawTimer=startTimer(20);
-    m_ballUpdateTimer = startTimer(10);
+    //srand(time(NULL));
+    m_currentScore = 0;
+    m_batMove = true;
+    m_batPush = false;
+    m_batPos = ngl::Vec3(0,0,(-(15+s_batGap)));
+
     // now clear the key set
     m_keysPressed.clear();
 
@@ -40,8 +45,7 @@ NGLScene::~NGLScene()
 {
     ngl::NGLInit *Init = ngl::NGLInit::instance();
     std::cout<<"Shutting down NGL, removing VAO's and Shaders\n";
-    delete m_light,m_ball;
-            //,m_ball,m_goal,m_bat;
+    delete m_light,m_ball, m_box, m_goal,m_bat;
     Init->NGLQuit();
 }
 //----------------------------------------------------------------------------------------------------------------------
@@ -70,7 +74,6 @@ void NGLScene::initialize()
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_MULTISAMPLE);
-    //glDisable(GL_CULL_FACE);
     //shader setup
     ngl::ShaderLib *shader=ngl::ShaderLib::instance();
 
@@ -99,7 +102,7 @@ void NGLScene::initialize()
     (*shader)["Phong"]->use();
 
     //camera setup
-    ngl::Vec3 from(0,0,-3);
+    ngl::Vec3 from(0,-2,-40);
     ngl::Vec3 to(0,0,0);
     ngl::Vec3 up(0,1,0);
 
@@ -109,11 +112,10 @@ void NGLScene::initialize()
     shader->setShaderParam3f("viewerPos",m_cam->getEye().m_x,m_cam->getEye().m_y,m_cam->getEye().m_z);
 
     //directional white light setup
+    m_light = new ngl::Light(ngl::Vec3(-3,-3,4),ngl::Colour(1,1,1,1),ngl::Colour(1,1,1,1),ngl::DIRECTIONALLIGHT );
     ngl::Mat4 iv=m_cam->getViewMatrix();
     iv.transpose();
-    m_light = new ngl::Light(ngl::Vec3(-2,3,5),ngl::Colour(1,1,1,1),ngl::Colour(1,1,1,1),ngl::DIRECTIONALLIGHT );
     m_light->setTransform(iv);
-
     m_light->loadToShader("light");
 
 
@@ -123,37 +125,31 @@ void NGLScene::initialize()
     //m_title->setScreenSize(width(),height());
     //m_title->setColour(1,1,1);
 
-    //m_text = new ngl::Text (QFont("Arial", 16));
-    //m_text->setScreenSize(width(),height());
-    //m_text->setColour(0.2f,0.2f,0.2f);
+    m_text = new ngl::Text (QFont("Arial", 16));
+    m_text->setScreenSize(width(),height());
+    m_text->setColour(0.2f,0.2f,0.2f);
 
     //set up the game
     //m_dink = new Game();
     //setupGameState(Game::STARTSCREEN);
 
-    //srand (static_cast <unsigned> (time(0)));
-    ngl::Material m(ngl::GOLD);
-    m.loadToShader("material");
 
-    //m_box = new Box((0,0,10),-10,6,6);//position needs calucating
+    m_box = new Box();
 
-//    m.set(m_ball->getMaterial());
-//    m.loadToShader("material");
-      m_ball = new Ball();
+    m_ball = new Ball();
+    //m_ball->generatePos();
+    m_ball->setPosition(ngl::Vec3(0,-6.5,13));
+   // m_ball->generateVel();
+    m_ball->setVelocity(ngl::Vec3(0,0.56,-0.7));
+
+    m_goal = new Goal();
+    //m_goal->generatePos();
+    m_goal->setPosition(ngl::Vec3(0,0,15),ngl::Vec3(0,180,0));
 
 
-    //m_ball->setPosition(m_ball->generatePos(m_box->getWidth(),m_box->getHeight(),m_box->getDepth()));
-   // m_ball->setVelocity(m_ball->generateVel());
+    m_bat = new Bat ();
+    m_bat->setMousePos(m_batPos);
 
-//    m.set(m_bat->getMaterial());
-//    m.loadToShader("material");
-//    m_bat = new Bat (m_batPos);//position needs calucating
-
-//    m_goal = new Goal ();
-//    m_goal->generatePos(m_box->getWidth(),m_box->getHeight(),m_box->getDepth());
-
-    //m_batUpdateTimer=startTimer(20);
-   // m_ballUpdateTimer=startTimer(40);
       glViewport(0,0,width(),height());
 }
 
@@ -175,21 +171,28 @@ void NGLScene::render()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     //drawScene(m_dink->getGameState(),"Phong");
-    //ngl::ShaderLib *shader=ngl::ShaderLib::instance();
-    //(*shader)["TextureShader"]->use();
 
-    //ngl::Material m(ngl::CHROME);
-    //m.loadToShader("material");
-    //m_box->draw("Phong",m_cam);
 
-    //m.set(m_ball->getMaterial());
-    //m.loadToShader("material");
+    ngl::Material m(ngl::CHROME);
+    m.loadToShader("material");
+    m_box->draw("Phong",m_cam);
+
+    m.set(m_ball->getMaterial());
+    m.loadToShader("material");
     m_ball->draw("Phong",m_cam);
 
-    //m_bat->setMousePos(m_batPos);
-    //m.set(m_bat->getMaterial());
-    //m.loadToShader("material");
-    //m_bat->draw("Phong",m_cam);
+    m.set(ngl::BRASS);
+    m.loadToShader("material");
+    m_goal->draw("Phong",m_cam);
+
+    m.set(ngl::GOLD);
+    m.loadToShader("material");
+    m_bat->draw("Phong",m_cam);
+
+//    (*shader)["nglTextShader"]->use();
+//    QString score = QString::number(m_currentScore);
+//    QString scoreText = "Score: "+score;
+//    m_text->renderText(10,10,scoreText);
 
 
 
@@ -277,31 +280,34 @@ void NGLScene::render()
 //----------------------------------------------------------------------------------------------------------------------
 void NGLScene::mouseMoveEvent (QMouseEvent * _event)
 
-//Am i right in thinking _event->x() is the amount the mouse has moved in the x direction?<-------------------
 
 {
-//    if(m_bat->getPush() == "False" || m_dink->getGameState() == Game::INGAME)
-//    {
+    if(m_batMove && _event->buttons() == Qt::NoButton)
+
+    {
+        int w=1024;
+        int h=720;
+        int offsetX = _event->x() - (w/2);
+        int offsetY = _event->y() - (h/2);
+
+        ngl::Real x = offsetX*-0.03;
+        ngl::Real y = offsetY*-0.03;
+        ngl::Real z = -(15+s_batGap);
+        m_batPos.set(x,y,z);
+        m_bat->setMousePos(m_batPos);
+
+
+        //jons
 //        int diffX = (int)(_event->x() - m_origXPos);
 //        int diffY = (int)(_event->y() - m_origYPos);
 //        m_origXPos=_event->x();
 //        m_origYPos=_event->y();
-//        m_batPos.m_x += INCREMENT * diffX;
-//        m_batPos.m_y -= INCREMENT * diffY;
-//        renderLater();
-//    }
-   // if(m_bat->getPush() == "False")
-//        {
-//            ngl::Real boxDepth = m_box->getDepth();
-//            int diffX = (int)(_event->x() - m_origXPos);
-//            int diffY = (int)(_event->y() - m_origYPos);
-//            m_origXPos=_event->x();
-//            m_origYPos=_event->y();
-//            m_batPos.m_x += INCREMENT * diffX;
-//            m_batPos.m_y -= INCREMENT * diffY;
-//            m_batPos.m_z = -boxDepth/2;
-//            renderLater();
-//        }
+//        m_batPos.m_x += 0.03 * diffX;
+//        m_batPos.m_y -= 0.03 * diffY;
+//        m_bat->setMousePos(m_batPos);
+
+        renderLater();
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -310,11 +316,13 @@ void NGLScene::mousePressEvent ( QMouseEvent * _event)
 //    if(_event->button() == Qt::LeftButton || m_dink->getGameState() == Game::INGAME)
 //    {
 //        m_bat->pushStart();
+//        m_batPush=true;
 //        renderLater();
 //    }
 //    if(_event->button() == Qt::LeftButton)
 //    {
 //        m_bat->pushStart();
+//        m_batPush=true;
 //        renderLater();
 //    }
 }
@@ -506,39 +514,68 @@ void NGLScene::keyPressEvent(QKeyEvent *_event)
 
 ////----------------------------------------------------------------------------------------------------------------------
 
-//void NGLScene::updateBat()
-//{
-//    //update the position based on mouse movement
+void NGLScene::updateBat()
+{
+    //update the position based on mouse movement
+    //update the normal based on ball m_pos
+    if (m_batPush == false)
+    {
+        //initialize for bat normal maths
+        ngl::Vec3 defaultNormal, newNormal;
+        ngl::Vec3 ballPos = m_ball->getPosition();
+        //calulate the bat's new normal vector
+        defaultNormal = m_bat->getDefaultNormal();
+        newNormal.set(ballPos - m_batPos);
+        newNormal.normalize();
+        m_bat->setNormal(newNormal);
+        //initialize for bat orientation maths
+        ngl::Vec3 xVec, yVec, zVec;
+        xVec = ngl::Vec3(newNormal.m_x,0,0);
+        yVec = ngl::Vec3(0,newNormal.m_y,0);
+        zVec = ngl::Vec3(0,0,newNormal.m_z);
+        //use the dot product to find the angles of each component
+        //for x rotation
+        ngl::Real dotX, thetaXr,thetaXd;
+        dotX = defaultNormal.dot(xVec);
+        thetaXr = acos(dotX);//since both vectors are normalized
+        thetaXd = thetaXr*(180/M_PI);//convert to degrees
+        //for y rotation
+        ngl::Real dotY, thetaYr,thetaYd;
+        dotY = defaultNormal.dot(yVec);
+        thetaYr = acos(dotY);
+        thetaYd = thetaYr*(180/M_PI);
+        //for z rotation
+        ngl::Real dotZ, thetaZr,thetaZd;
+        dotZ = defaultNormal.dot(zVec);
+        thetaZr = acos(dotZ);
+        thetaZd = thetaZr*(180/M_PI);
+        //Use the components to set the bat orientation
+        ngl::Vec3 batOrient;
+        batOrient.set(ngl::Vec3(thetaXd, thetaYd, thetaZd));
+        m_bat->setOrient(batOrient);
+    }
+    else
+    {
+        ngl::Vec3 pushV, pushA, pushPos, newPushV,newPushPos;
+        ngl::Real pushDist = m_bat->getPushDist();
+        pushV.set(m_bat->getPushV());
+        pushA.set(m_bat->getPushA());
+        newPushV = pushV+pushA;
+        newPushPos = pushPos+pushV;
+        m_bat->setPushV(newPushV);
+        m_bat->setPushPos(newPushPos);
 
-
-//    //update the normal based on ball m_pos
-//    if (m_bat->getPush() == "False")
-//    {
-//        ngl::Vec3 newNormal;
-//        ngl::Vec3 ballPos = m_ball->getPosition();
-//        ngl::Vec3 batPos = m_bat->getPos();
-//        newNormal = ballPos - batPos;
-//        newNormal.normalize();
-//        m_bat->setNormal(newNormal);
-//    }
-//    else
-//    {
-//        ngl::Vec3 pushV, pushA, pushPos;
-//        pushV = m_bat->getPushV();
-//        pushA = m_bat->getPushA();
-//        m_bat->setPushV(pushV+pushA);
-//        m_bat->setPushPos(pushPos + pushV);
-//        if (pushPos.m_z >= s_batPushDistance)
-//        {
-//            m_bat->pushPeak();
-//        }
-//        if (pushPos.m_z <= 0)
-//        {
-//            m_bat->pushStop();
-//        }
-//    }
-//    renderLater();
-//}
+        if (pushPos.m_z >= pushDist)
+        {
+            m_bat->pushPeak();
+        }
+        if (pushPos.m_z <= 0)
+        {
+            m_bat->pushStop();
+        }
+    }
+    renderLater();
+}
 ////----------------------------------------------------------------------------------------------------------------------
 
 void NGLScene::updateBall()
@@ -547,66 +584,57 @@ void NGLScene::updateBall()
 
     //this will change pos by an increment dictated by the velocity
     //batCollision();
-    //wallCollision();
+    wallCollision();
 
-
-
-
-    ngl::Real gravityIncrement = 0.1f;
     ngl::Vec3 oldVel = m_ball->getVelocity();
-    ngl::Vec3 newVel = (oldVel.m_x, (oldVel.m_y - gravityIncrement), oldVel.m_z);
+    ngl::Vec3 newVel = oldVel - (ngl::Vec3(0,(ngl::Real)0.02,0));
     m_ball->setVelocity(newVel);
+
 
     ngl::Vec3 oldPos = m_ball->getPosition();
     ngl::Vec3 newPos = (oldPos + newVel);
     m_ball->setPosition(newPos);
-
-
-
 
     renderLater();
 }
 
 ////----------------------------------------------------------------------------------------------------------------------
 
-//void NGLScene::wallCollision()
-//{
-//    ngl::Vec3 pos = m_ball->getPosition();
-//    ngl::Real x = pos.m_x, y = pos.m_y, z = pos.m_z, r = m_ball->getRadius();
-//    ngl::Real width = m_box->getWidth(),height = m_box->getHeight(),depth=m_box->getDepth();
+void NGLScene::wallCollision()
+{
+    ngl::Vec3 pos = m_ball->getPosition();
+    ngl::Real x = pos.m_x, y = pos.m_y, z = pos.m_z, r = m_ball->getRadius();
+    ngl::Real width = m_box->getWidth(),height = m_box->getHeight(),depth=m_box->getDepth();
+    if(x >= ((width/2)-r) || x <= (r-(width/2)))
+    {
+        ngl::Vec3 oldVel = m_ball->getVelocity();
+        ngl::Vec3 newVel = oldVel * ngl::Vec3(-1,1,1);
+        m_ball->setVelocity(newVel);//SIDE
+    }
+    else if( z >= (depth/2)-r)
+    {
+        goalCollision();//BACK
+    }
+    else if( z <= -((depth/2)+s_batGap))
+    {
+        m_currentScore = 0;
+        m_ball->setPosition(ngl::Vec3(0,-6.5,13));
+        m_ball->setVelocity(ngl::Vec3(0,0.56,-0.7));
+    }
+    else if( y >= (height/2)-r)
+    {
+        ngl::Vec3 oldVel = m_ball->getVelocity();
+        ngl::Vec3 newVel = oldVel * ngl::Vec3(1,-1,1);
+        m_ball->setVelocity(newVel);//TOP
+    }
+    else if( y <= r-(height/2))
+    {
+        m_currentScore = 0;
+        m_ball->setPosition(ngl::Vec3(0,-6.5,13));
+        m_ball->setVelocity(ngl::Vec3(0,0.56,-0.7));
 
-//    if(x >= ((width/2)-r) || x <= (r-(width/2)))
-//    {
-//        goalCollision();
-//        ngl::Vec3 oldVel = m_ball->getVelocity();
-//        ngl::Vec3 newVel = (-oldVel.m_x,oldVel.m_y,oldVel.m_z);
-//        m_ball->setVelocity(newVel);//SIDE
-//    }
-//    else if( z >= (depth/2)-r)
-//    {
-//        goalCollision();
-//        ngl::Vec3 oldVel = m_ball->getVelocity();
-//        ngl::Vec3 newVel = (oldVel.m_x,oldVel.m_y,-oldVel.m_z);
-//        m_ball->setVelocity(newVel);//BACK
-//    }
-//    else if( z <= r-(depth/2))
-//    {
-//        //setupGameState(Game::GAMEOVER);//MISS
-//        gameOver();
-
-//    }
-//    else if( y >= (height/2)-r)
-//    {
-//        ngl::Vec3 oldVel = m_ball->getVelocity();
-//        ngl::Vec3 newVel = (oldVel.m_x,-oldVel.m_y,oldVel.m_z);
-//        m_ball->setVelocity(newVel);//TOP
-//    }
-//    else if( y <= (height/2)+r)
-//    {
-//        //setupGameState(Game::GAMEOVER);//BOTTOM
-//        gameOver();
-//    }
-//}
+    }
+}
 ////----------------------------------------------------------------------------------------------------------------------
 
 //void NGLScene::batCollision()
@@ -631,58 +659,47 @@ void NGLScene::updateBall()
 //}
 ////----------------------------------------------------------------------------------------------------------------------
 
-//void NGLScene::goalCollision()
-//{
-//    ngl::Vec3 PQ, goalPos, ballPos;
-//    ngl::Real distance, goalR;
+void NGLScene::goalCollision()
+{
+    ngl::Vec3 PQ, goalPos, ballPos;
+    ngl::Real distance, goalR;
 
-//    goalPos = m_goal->getPosition();
-//    ballPos = m_ball->getPosition();
+    goalPos = m_goal->getPosition();
+    ballPos = m_ball->getPosition();
 
-//    PQ = goalPos - ballPos;
-//    goalR = m_goal->getRadius();
-//    distance = PQ.length();
+    PQ = goalPos - ballPos;
+    goalR = m_goal->getRadius();
+    distance = PQ.length();
 
-//    if(distance <= goalR)
-//    {
-//        //int score = m_dink->getCurrentScore();
-//        //m_dink->setCurrentScore(score + 1);
+    if(distance <= goalR)
+    {
+        m_currentScore ++;
+        //m_dink->setCurrentScore(score + 1);
 
-//        ngl::Real width,depth,height;
-//        width = m_box->getWidth();height=m_box->getHeight();depth=m_box->getDepth();
-//        ngl::Vec3 newBallPos = m_ball->generatePos(width,height,depth);
-//        ngl::Vec3 newBallVel = m_ball->generateVel();
-//        m_goal->generatePos(width,height,depth);
+        m_ball->setPosition(ngl::Vec3(0,-6.5,14));
+       // m_ball->generateVel();
+        m_ball->setVelocity(ngl::Vec3(0,0.56,-0.7));
 
-//        m_ball->setPosition(newBallPos);
-//        m_ball->setVelocity(newBallVel);
-//    }
-//}
+        //m_goal->generatePos();
+        m_goal->setPosition(ngl::Vec3(0,0,15),ngl::Vec3(0,180,0));
+    }
+    else
+    {
+        ngl::Vec3 oldVel = m_ball->getVelocity();
+        ngl::Vec3 newVel = oldVel * ngl::Vec3(1,1,-1);
+        m_ball->setVelocity(newVel);//TOP
+    }
+}
 ////----------------------------------------------------------------------------------------------------------------------
 
 void NGLScene::timerEvent( QTimerEvent *_event)
 {
-//    // the usual process is to check the event timerID and compare it to
-//    // any timers we have started with startTimer
-    if (_event->timerId() == m_ballUpdateTimer)
-    {
-        updateBall();
-    }
-
-    //if (_event->timerId() == m_batUpdateTimer)
-    //{
-    //    updateBat();
-    //}
-
     if (_event->timerId() == m_redrawTimer)
     {
+
+        updateBall();
+        updateBat();
         renderNow();
     }
-
 }
-//----------------------------------------------------------------------------------------------------------------------
-//void NGLScene::gameOver()
-//{
-//    killTimer(m_batUpdateTimer);
-//    killTimer(m_ballUpdateTimer);
-//}
+

@@ -11,16 +11,20 @@ class Goal
 {
 public:
     Goal();
-    void setPosition (ngl::Vec3 _pos);
+    void setPosition (ngl::Vec3 _pos,ngl::Vec3 _orient);
     inline ngl::Vec3 getPosition(){return m_pos;}
     void setRadius (    const ngl::Real _r);
     inline ngl::Real getRadius(){return m_r;}
     void draw(const std::string &_shader, ngl::Camera *_cam );
-    void generatePos(   const ngl::Real _boxWidth, const ngl::Real _boxHeight, const ngl::Real _boxDepth);//this includes setting the orientation needed depending on the wall chosen
+    void generatePos();//this includes setting the orientation needed depending on the wall chosen
+    int generateInt(const int _min, const int _max);
+    float generateFloat(const float _min, const float _max);
+
 
 private:
     ngl::Vec3 m_pos;
     ngl::Vec3 m_orientation;
+    ngl::Real m_scale;
     ngl::Real m_r;
     std::string m_source;
     ngl::Obj *m_mesh;

@@ -23,9 +23,11 @@ class Ball
         inline ngl::Real getRadius() const {return m_r;}
         inline std::string getSource() const {return m_source;}//string containing file location
         inline ngl::Material getMaterial() const {return m_material;}
-        ngl::Vec3 batDeflect(ngl::Vec3 _batNormal);//changses the velocity vector when colliding with the bat. Still needs to have 'energy transfer' simulation included
-        ngl::Vec3 generatePos(   const ngl::Real _boxWidth, const ngl::Real _boxHeight, const ngl::Real _boxDepth);//make a vec3 to use for position once a goal has been scored
-        ngl::Vec3 generateVel();//make a vec3 to use for the starting velocity once a goal has been scored. Needs calibration
+        void batDeflect(ngl::Vec3 _batNormal);//changses the velocity vector when colliding with the bat. Still needs to have 'energy transfer' simulation included
+        int generateInt(const int _min,const int _max);
+        float generateFloat(const float _min,const float _max);
+        void generatePos();//make a vec3 to use for position once a goal has been scored
+        void generateVel();//make a vec3 to use for the starting velocity once a goal has been scored. Needs calibration
 
 
     private:

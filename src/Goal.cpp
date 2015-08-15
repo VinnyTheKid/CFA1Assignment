@@ -8,14 +8,17 @@
 Goal::Goal()
 {
         m_pos = (0,0,0);
-        m_r = 0.2;
+        m_scale = 1;
+        m_r = 5 * m_scale;
         m_source= "models/goal.obj";
         m_mesh = new ngl::Obj(m_source);
+        m_orientation = (0,0,0);
         m_mesh->createVAO();
 }
-void Goal::setPosition(     const ngl::Vec3 _pos)
+void Goal::setPosition(     const ngl::Vec3 _pos, const ngl::Vec3 _orient)
 {
     m_pos = _pos;
+    m_orientation = _orient;
 }
 
 void Goal::setRadius (    const ngl::Real _r)
@@ -29,6 +32,8 @@ void Goal::draw(const std::string &_shader, ngl::Camera *_cam )
     ngl::ShaderLib *shader=ngl::ShaderLib::instance();
     (*shader)[_shader]->use();
 
+      m_transform.setScale(ngl::Vec3(1,1,m_scale));
+      m_transform.setRotation(m_orientation);
       m_transform.setPosition(m_pos);
       ngl::Mat4 MVP= m_transform.getMatrix() * _cam->getVPMatrix() ;
     shader->setShaderParamFromMat4("MVP",MVP);
@@ -36,62 +41,37 @@ void Goal::draw(const std::string &_shader, ngl::Camera *_cam )
     m_mesh->draw();
 }
 
-void Goal::generatePos(   const ngl::Real _boxWidth, const ngl::Real _boxHeight, const ngl::Real _boxDepth)
+void Goal::generatePos()
 {
-    int wallNo = rand() % 3 + 1;
+    ngl::Real boxWidth=20, boxHeight=15, boxDepth=30;
+
     ngl::Vec3 newGoalPos;
-    if(wallNo ==1)
-    {
-        m_orientation = (0,90,0);
+    m_orientation = (0,180,0);
 
-        ngl::Real minY, maxY, minZ, maxZ, x, y, z;
-        x = -_boxWidth/2;
-        minY = m_r-(_boxHeight/2);
-        maxY = (_boxHeight/2)-m_r;
-        minZ = m_r-(_boxDepth/2);
-        maxZ = (_boxDepth/2)-m_r;
+    ngl::Real minX, maxX, minY, maxY, x, y, z;
+    minX = m_r-(boxWidth/2);
+    maxX = (boxWidth/2)-m_r;
+    minY = m_r-(boxHeight/2);
+    maxY = (boxHeight/2)-m_r;
+    z = boxDepth/2;
 
-        float b = minY + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(maxY - minY));
-        float c = minZ + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(maxZ - minZ));
+    float a = generateFloat(minX,maxX);
+    float b = generateFloat(minY,maxY);
 
-        y = b; z = c;
-        newGoalPos = (x, y, z);
-        m_pos = newGoalPos;
-    }
-    else if(wallNo ==2)
-    {
-        m_orientation = (0,0,0);
+    x = a; y = b;
+    newGoalPos = (x, y, z);
+    m_pos = newGoalPos;
 
-        ngl::Real minX, maxX, minY, maxY, x, y, z;
-        minX = m_r-(_boxWidth/2);
-        maxX = (_boxWidth/2)-m_r;
-        minY = m_r-(_boxHeight/2);
-        maxY = (_boxHeight/2)-m_r;
-        z = _boxDepth/2;
+}
 
-        float a = minX + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(maxX - minX));
-        float b = minY + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(maxY - minY));
+int Goal::generateInt(const int _min, const int _max)
+{
+    return rand() % _max + _min;
+}
 
-        x = a; y = b;
-        newGoalPos = (x, y, z);
-        m_pos = newGoalPos;
-    }
-    else
-    {
-        m_orientation = (0,-90,0);
-
-        ngl::Real minY, maxY, minZ, maxZ, x, y, z;
-        x = _boxWidth/2;
-        minY = m_r-(_boxHeight/2);
-        maxY = (_boxHeight/2)-m_r;
-        minZ = m_r-(_boxDepth/2);
-        maxZ = (_boxDepth/2)-m_r;
-
-        float b = minY + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(maxY - minY));
-        float c = minZ + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(maxZ - minZ));
-
-        y = b; z = c;
-        newGoalPos = (x, y, z);
-        m_pos = newGoalPos;
-    }
+float Goal::generateFloat(const float _min, const float _max)
+{
+    float random = ((float) rand()) / (float) RAND_MAX;
+    float r = random * (_min - _max);
+    return _min + r;
 }
