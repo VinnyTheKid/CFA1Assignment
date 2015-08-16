@@ -15,10 +15,11 @@
 #include <ngl/NGLInit.h>
 #include <ngl/VAOPrimitives.h>
 #include <ngl/ShaderLib.h>
+
 #include <cstdlib>
 #include <iostream>
 //#include <QString>
-//#include <ctime>
+#include <ctime>
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -135,16 +136,20 @@ void NGLScene::initialize()
 
 
     m_box = new Box();
+    ngl::Real boxWidth, boxHeight, boxDepth;
+    boxWidth = m_box->getWidth();
+    boxHeight = m_box->getHeight();
+    boxDepth = m_box->getDepth();
 
     m_ball = new Ball();
     //m_ball->generatePos();
-    m_ball->setPosition(ngl::Vec3(0,-6.5,13));
+    m_ball->generatePos(boxWidth);
    // m_ball->generateVel();
-    m_ball->setVelocity(ngl::Vec3(0,0.56,-0.7));
+    m_ball->generateVel();
 
     m_goal = new Goal();
     //m_goal->generatePos();
-    m_goal->setPosition(ngl::Vec3(0,0,15),ngl::Vec3(0,180,0));
+    m_goal->generatePos(boxWidth,boxHeight,boxDepth);
 
 
     m_bat = new Bat ();
@@ -190,9 +195,9 @@ void NGLScene::render()
     m_bat->draw("Phong",m_cam);
 
 //    (*shader)["nglTextShader"]->use();
-//    QString score = QString::number(m_currentScore);
-//    QString scoreText = "Score: "+score;
-//    m_text->renderText(10,10,scoreText);
+    QString score = QString::number(m_currentScore);
+    QString scoreText = "Score: "+score;
+    m_text->renderText(10,10,scoreText);
 
 
 
@@ -282,7 +287,7 @@ void NGLScene::mouseMoveEvent (QMouseEvent * _event)
 
 
 {
-    if(m_batMove && _event->buttons() == Qt::NoButton)
+    if(m_batMove && _event->buttons() == Qt::NoButton)//-------------< ISSUE #2
 
     {
         int w=1024;
@@ -551,7 +556,7 @@ void NGLScene::updateBat()
         thetaZd = thetaZr*(180/M_PI);
         //Use the components to set the bat orientation
         ngl::Vec3 batOrient;
-        batOrient.set(ngl::Vec3(thetaXd, thetaYd, thetaZd));
+        batOrient.set(ngl::Vec3(0, 0, thetaZd));
         m_bat->setOrient(batOrient);
     }
     else
@@ -618,8 +623,10 @@ void NGLScene::wallCollision()
     else if( z <= -((depth/2)+s_batGap))
     {
         m_currentScore = 0;
-        m_ball->setPosition(ngl::Vec3(0,-6.5,13));
-        m_ball->setVelocity(ngl::Vec3(0,0.56,-0.7));
+        m_ball->generatePos(width);
+        m_ball->generateVel();
+        m_goal->generatePos(width,height,depth);
+
     }
     else if( y >= (height/2)-r)
     {
@@ -630,33 +637,38 @@ void NGLScene::wallCollision()
     else if( y <= r-(height/2))
     {
         m_currentScore = 0;
-        m_ball->setPosition(ngl::Vec3(0,-6.5,13));
-        m_ball->setVelocity(ngl::Vec3(0,0.56,-0.7));
+        m_ball->generatePos(width);
+        m_ball->generateVel();
+        m_goal->generatePos(width,height,depth);
 
     }
 }
 ////----------------------------------------------------------------------------------------------------------------------
 
-//void NGLScene::batCollision()
-//{
-//    ngl::Real planeDistance,centreDistance,magN;
-//    ngl::Vec3 batPos, ballPos, vecPQ, batNormal;
-//    ngl::Real ballR = m_ball->getRadius();
-//    ngl::Real batR = m_bat->getRadius();
+void NGLScene::batCollision()
+{
+    ngl::Real planeDistance,centreDistance,magN;
+    ngl::Vec3 batPos, ballPos, vecPQ, batNormal;
+    ngl::Real ballR = m_ball->getRadius();
+    ngl::Real batR = m_bat->getRadius();
 
-//    batNormal = m_bat->getNormal();
-//    vecPQ = batPos-ballPos;
-//    magN = batNormal.length();
-//    planeDistance = (vecPQ.dot(batNormal))/magN;
-//    centreDistance = vecPQ.length();
+    batNormal = m_bat->getNormal();//HERE WE ARE
+    vecPQ = batPos-ballPos;
+    magN = batNormal.length();
+    planeDistance = (vecPQ.dot(batNormal))/magN;
+    centreDistance = vecPQ.length();
 
 
-//    if(planeDistance <= ballR || centreDistance <=batR)
-//    {
-//        m_ball->batDeflect(batNormal);
-//    }
+    if(planeDistance <= ballR || centreDistance <=batR)
+    {
+        ngl::Vec3 newVel, oldVel;
+        oldVel = m_ball->getVelocity();
+        newVel = oldVel.reflect(batNormal);
+        m_ball->setVelocity(newVel);
+        //m_ball->batDeflect(batNormal);
+    }
 
-//}
+}
 ////----------------------------------------------------------------------------------------------------------------------
 
 void NGLScene::goalCollision()
@@ -673,15 +685,19 @@ void NGLScene::goalCollision()
 
     if(distance <= goalR)
     {
+        ngl::Real boxWidth, boxHeight, boxDepth;
+        boxWidth = m_box->getWidth();
+        boxHeight = m_box->getHeight();
+        boxDepth = m_box->getDepth();
+
         m_currentScore ++;
         //m_dink->setCurrentScore(score + 1);
 
-        m_ball->setPosition(ngl::Vec3(0,-6.5,14));
-       // m_ball->generateVel();
-        m_ball->setVelocity(ngl::Vec3(0,0.56,-0.7));
+        m_ball->generatePos(boxWidth);
+        m_ball->generateVel();
 
-        //m_goal->generatePos();
-        m_goal->setPosition(ngl::Vec3(0,0,15),ngl::Vec3(0,180,0));
+        m_goal->generatePos(boxWidth,boxHeight,boxDepth);
+        //m_goal->setPosition(ngl::Vec3(0,0,15),ngl::Vec3(0,180,0));
     }
     else
     {

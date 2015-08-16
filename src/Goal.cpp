@@ -9,11 +9,12 @@ Goal::Goal()
 {
         m_pos = (0,0,0);
         m_scale = 1;
-        m_r = 5 * m_scale;
+        m_r = 8 * m_scale;
         m_source= "models/goal.obj";
         m_mesh = new ngl::Obj(m_source);
         m_orientation = (0,0,0);
         m_mesh->createVAO();
+        srand(time(NULL));
 }
 void Goal::setPosition(     const ngl::Vec3 _pos, const ngl::Vec3 _orient)
 {
@@ -32,7 +33,7 @@ void Goal::draw(const std::string &_shader, ngl::Camera *_cam )
     ngl::ShaderLib *shader=ngl::ShaderLib::instance();
     (*shader)[_shader]->use();
 
-      m_transform.setScale(ngl::Vec3(1,1,m_scale));
+      m_transform.setScale(ngl::Vec3(m_scale,m_scale,1));
       m_transform.setRotation(m_orientation);
       m_transform.setPosition(m_pos);
       ngl::Mat4 MVP= m_transform.getMatrix() * _cam->getVPMatrix() ;
@@ -41,37 +42,24 @@ void Goal::draw(const std::string &_shader, ngl::Camera *_cam )
     m_mesh->draw();
 }
 
-void Goal::generatePos()
+void Goal::generatePos(ngl::Real _boxWidth, ngl::Real _boxHeight, ngl::Real _boxDepth)
 {
-    ngl::Real boxWidth=20, boxHeight=15, boxDepth=30;
 
-    ngl::Vec3 newGoalPos;
-    m_orientation = (0,180,0);
+    float minX = (float)m_r-(_boxWidth/2);
+    float maxX = (_boxWidth/2)-(float)m_r;
+    float random1 = ((float) rand()) / (float) RAND_MAX;
+    ngl::Real posX = minX + (random1 * (maxX - minX));
 
-    ngl::Real minX, maxX, minY, maxY, x, y, z;
-    minX = m_r-(boxWidth/2);
-    maxX = (boxWidth/2)-m_r;
-    minY = m_r-(boxHeight/2);
-    maxY = (boxHeight/2)-m_r;
-    z = boxDepth/2;
+    float minY = (float)m_r-(_boxHeight/2);
+    float maxY = (_boxHeight/2)-(float)m_r;
+    float random2 = ((float) rand()) / (float) RAND_MAX;
+    float posY = minY + (random2 * (maxY - minY));
 
-    float a = generateFloat(minX,maxX);
-    float b = generateFloat(minY,maxY);
+    ngl::Real posZ = (_boxDepth/2)-1;
 
-    x = a; y = b;
-    newGoalPos = (x, y, z);
-    m_pos = newGoalPos;
+    ngl::Vec3 newPos;
+    newPos.set(ngl::Vec3(posX,posY,posZ));
+    m_pos = newPos;
 
 }
 
-int Goal::generateInt(const int _min, const int _max)
-{
-    return rand() % _max + _min;
-}
-
-float Goal::generateFloat(const float _min, const float _max)
-{
-    float random = ((float) rand()) / (float) RAND_MAX;
-    float r = random * (_min - _max);
-    return _min + r;
-}

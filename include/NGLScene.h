@@ -187,7 +187,7 @@ private:
     /// @brief this method detects collisions with the walls of the box and performs the
     /// appropriate action depending on where the collision occurs
     //----------------------------------------------------------------------------------------------------------------------
-    //void batCollision();
+    void batCollision();
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief this method detects a collision between the ball and bat and alters the
     /// ball's velocity based on the bat's normal

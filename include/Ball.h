@@ -7,6 +7,7 @@
 #include <ngl/Transformation.h>
 #include <ngl/Material.h>
 #include <stdlib.h>
+#include <random>
 #include <time.h>
 
 
@@ -24,9 +25,7 @@ class Ball
         inline std::string getSource() const {return m_source;}//string containing file location
         inline ngl::Material getMaterial() const {return m_material;}
         void batDeflect(ngl::Vec3 _batNormal);//changses the velocity vector when colliding with the bat. Still needs to have 'energy transfer' simulation included
-        int generateInt(const int _min,const int _max);
-        float generateFloat(const float _min,const float _max);
-        void generatePos();//make a vec3 to use for position once a goal has been scored
+        void generatePos(ngl::Real _boxWidth);//make a vec3 to use for position once a goal has been scored
         void generateVel();//make a vec3 to use for the starting velocity once a goal has been scored. Needs calibration
 
 

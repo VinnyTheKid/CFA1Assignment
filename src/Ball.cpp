@@ -3,6 +3,7 @@
 #include <cmath>
 #include <ngl/ShaderLib.h>
 #include <stdlib.h>
+#include <random>
 #include <time.h>
 
 Ball::Ball()
@@ -23,6 +24,8 @@ Ball::Ball()
         m_material.setDiffuse(_dif);
         m_material.setSpecular(_spec);
         m_material.setRoughness(_rough);
+
+        srand(time(NULL));
     }
 
 void Ball::draw(const std::string &_shader,  ngl::Camera *_cam )
@@ -79,40 +82,38 @@ void Ball::batDeflect(ngl::Vec3 m_batNormal)
     m_v = m_vNew;
 }
 
-void Ball::generatePos()
+void Ball::generatePos(ngl::Real _boxWidth)
 {
-    ngl::Real x, y, z;
-    x = Ball::generateFloat(-4,4);
-    y = -4.25;
-    z = 14;
-    m_pos = ngl::Vec3(x,y,z);
 
+    float a = (-_boxWidth/2)+3;
+    float b = (_boxWidth/2)-3;
+    float random = ((float) rand()) / (float) RAND_MAX;
+    float diff = b - a;
+    float r = random * diff, x;
+    x = a + r;
+
+    ngl::Real newXpos = x;
+    ngl::Vec3 newPos;
+    newPos.set(ngl::Vec3 (newXpos,-6.5,13));
+    m_pos = newPos;
 }
 
 void Ball::generateVel()
 {
     m_v = ngl::Vec3(0,0,0);
     ngl::Real x, y, z;
-    float minX, maxX, minY, maxY, minZ, maxZ;
+    float minX, maxX, minY, maxY;
 
-    minX = 0; maxX = 0; //SOMETHINGS WRONG HERE
-    minY = 0.4; maxY = 0.55;
-    minZ = -0.6; maxZ = -0.8;
+    minX = -0.1f; maxX = 0.1f;
+    minY = 0.45f; maxY = 0.65f;
+    z=-0.7f;
 
-    float a = generateFloat(minX,maxX);
-    float b = generateFloat(minY,maxY);
-    float c = generateFloat(minZ,maxZ);
+    float a = minX + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxX-minX)));
+    float b = minY + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxY-minY)));
 
-    x = (ngl::Real)a; y = (ngl::Real)b; z = (ngl::Real)c;
+    x = (ngl::Real)a; y = (ngl::Real)b;
     m_v = ngl::Vec3(x,y,z);
 }
 
-
-float Ball::generateFloat(const float _min,const float _max)
-{
-    float random = ((float) rand()) / (float) RAND_MAX;
-    float r = random * (_min - _max);
-    return _min + r;
-}
 
 

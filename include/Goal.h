@@ -16,9 +16,8 @@ public:
     void setRadius (    const ngl::Real _r);
     inline ngl::Real getRadius(){return m_r;}
     void draw(const std::string &_shader, ngl::Camera *_cam );
-    void generatePos();//this includes setting the orientation needed depending on the wall chosen
-    int generateInt(const int _min, const int _max);
-    float generateFloat(const float _min, const float _max);
+    void generatePos(ngl::Real _boxWidth, ngl::Real _boxHeight, ngl::Real _boxDepth);
+
 
 
 private:
