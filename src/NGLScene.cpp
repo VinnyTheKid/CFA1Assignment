@@ -176,6 +176,8 @@ void NGLScene::render()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     //drawScene(m_dink->getGameState(),"Phong");
+    ngl::ShaderLib *shader=ngl::ShaderLib::instance();
+    (*shader)["Phong"]->use();
 
 
     ngl::Material m(ngl::CHROME);
@@ -194,7 +196,7 @@ void NGLScene::render()
     m.loadToShader("material");
     m_bat->draw("Phong",m_cam);
 
-//    (*shader)["nglTextShader"]->use();
+    (*shader)["nglTextShader"]->use();
     QString score = QString::number(m_currentScore);
     QString scoreText = "Score: "+score;
     m_text->renderText(10,10,scoreText);
@@ -299,7 +301,7 @@ void NGLScene::mouseMoveEvent (QMouseEvent * _event)
         ngl::Real y = offsetY*-0.03;
         ngl::Real z = -(15+s_batGap);
         m_batPos.set(x,y,z);
-        m_bat->setMousePos(m_batPos);
+
 
 
         //jons
@@ -522,6 +524,7 @@ void NGLScene::keyPressEvent(QKeyEvent *_event)
 void NGLScene::updateBat()
 {
     //update the position based on mouse movement
+    m_bat->setMousePos(m_batPos);
     //update the normal based on ball m_pos
     if (m_batPush == false)
     {
@@ -534,10 +537,10 @@ void NGLScene::updateBat()
         newNormal.normalize();
         m_bat->setNormal(newNormal);
         //initialize for bat orientation maths
-        ngl::Vec3 xVec, yVec, zVec;
-        xVec = ngl::Vec3(newNormal.m_x,0,0);
-        yVec = ngl::Vec3(0,newNormal.m_y,0);
-        zVec = ngl::Vec3(0,0,newNormal.m_z);
+        ngl::Vec3 xVec, yVec, zVec, x, y, z;
+        xVec = ngl::Vec3(0,newNormal.m_y,newNormal.m_z);
+        yVec = ngl::Vec3(newNormal.m_x,0,newNormal.m_z);
+        zVec = ngl::Vec3(newNormal.m_x,newNormal.m_y,0);
         //use the dot product to find the angles of each component
         //for x rotation
         ngl::Real dotX, thetaXr,thetaXd;
@@ -545,18 +548,13 @@ void NGLScene::updateBat()
         thetaXr = acos(dotX);//since both vectors are normalized
         thetaXd = thetaXr*(180/M_PI);//convert to degrees
         //for y rotation
-        ngl::Real dotY, thetaYr,thetaYd;
-        dotY = defaultNormal.dot(yVec);
-        thetaYr = acos(dotY);
+        ngl::Real tanThetaY, thetaYr,thetaYd;
+        tanThetaY = newNormal.m_x/newNormal.m_z;
+        thetaYr = atan(tanThetaY);
         thetaYd = thetaYr*(180/M_PI);
-        //for z rotation
-        ngl::Real dotZ, thetaZr,thetaZd;
-        dotZ = defaultNormal.dot(zVec);
-        thetaZr = acos(dotZ);
-        thetaZd = thetaZr*(180/M_PI);
         //Use the components to set the bat orientation
         ngl::Vec3 batOrient;
-        batOrient.set(ngl::Vec3(0, 0, thetaZd));
+        batOrient.set(ngl::Vec3(thetaXd,thetaYd,0));
         m_bat->setOrient(batOrient);
     }
     else
