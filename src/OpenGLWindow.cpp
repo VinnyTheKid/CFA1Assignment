@@ -11,9 +11,9 @@
 #include <iostream>
 
 OpenGLWindow::OpenGLWindow(QWindow *_parent)
-    : QWindow(_parent)
-    , m_updatePending(false)
-    , m_context(0)
+  : QWindow(_parent)
+  , m_updatePending(false)
+  , m_context(0)
 
 {
   // ensure we render to OpenGL and not a QPainter by setting the surface type
