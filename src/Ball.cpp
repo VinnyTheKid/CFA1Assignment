@@ -10,8 +10,7 @@ Ball::Ball()
 {
   m_pos = ngl::Vec3(0,0,0);
   m_r= 0.5f;
-  m_source = "models/ball.obj";
-  m_mesh = new ngl::Obj(m_source);
+  m_mesh = new ngl::Obj("models/ball.obj");
   m_mesh->createVAO();
   m_v = ngl::Vec3(0,0,0);
 

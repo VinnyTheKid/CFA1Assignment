@@ -30,10 +30,6 @@ Bat::Bat()
   ngl::Colour _spec(0.50f,0.50f,0.50f);
   ngl::Real _rough(0.15f);
 
-  m_material.setAmbient(_amb);
-  m_material.setDiffuse(_dif);
-  m_material.setSpecular(_spec);
-  m_material.setRoughness(_rough);
   m_push = "False";
 }
 

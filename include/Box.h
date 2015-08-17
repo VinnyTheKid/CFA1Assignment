@@ -7,6 +7,15 @@
 #include <ngl/Obj.h>
 #include <ngl/Transformation.h>
 
+//----------------------------------------------------------------------------------------------------------------------
+/// @file Box.h
+/// @brief The Ball class, used to define the box's attributes and access methods.
+/// @author Vincent Clifton
+/// @version 1.0
+/// @date 17/8/2015
+/// @class Box
+/// @brief The Box class, used to define the box's attributes and access methods.
+//----------------------------------------------------------------------------------------------------------------------
 
 class Box
 {

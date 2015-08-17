@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['openglwindow',['OpenGLWindow',['../class_open_g_l_window.html',1,'OpenGLWindow'],['../class_open_g_l_window.html#a2fd92afd17361a60e058dc5433c316af',1,'OpenGLWindow::OpenGLWindow()']]],
-  ['openglwindow_2eh',['OpenGLWindow.h',['../_open_g_l_window_8h.html',1,'']]]
+  ['nglscene',['NGLScene',['../class_n_g_l_scene.html',1,'NGLScene'],['../class_n_g_l_scene.html#adbde5986bed766df177e33baa7fbb222',1,'NGLScene::NGLScene()']]],
+  ['nglscene_2eh',['NGLScene.h',['../_n_g_l_scene_8h.html',1,'']]]
 ];

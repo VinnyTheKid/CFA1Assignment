@@ -1,0 +1,137 @@
+\hypertarget{class_ball}{}\section{Ball Class Reference}
+\label{class_ball}\index{Ball@{Ball}}
+
+
+The \hyperlink{class_ball}{Ball} class, used to define the ball\textquotesingle{}s attributes and access methods.  
+
+
+
+
+{\ttfamily \#include $<$Ball.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_ball_a86a144d3dad6c953e422e32435923bbb}{}\hyperlink{class_ball_a86a144d3dad6c953e422e32435923bbb}{Ball} ()\label{class_ball_a86a144d3dad6c953e422e32435923bbb}
+
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+void \hyperlink{class_ball_a0b2248494bb869c889847fe7110a6b66}{set\+Position} (const ngl\+::\+Vec3 \+\_\+pos)
+\begin{DoxyCompactList}\small\item\em Sets the ball\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \hyperlink{class_ball_abf1da28d789d938eac0f8070e8c35514}{set\+Velocity} (const ngl\+::\+Vec3 \+\_\+v)
+\begin{DoxyCompactList}\small\item\em Sets the ball\textquotesingle{}s velocity. \end{DoxyCompactList}\item 
+void \hyperlink{class_ball_a01f40cdd20529453aeed3c5a62c480bd}{set\+Radius} (const ngl\+::\+Real \+\_\+r)
+\begin{DoxyCompactList}\small\item\em Sets the ball\textquotesingle{}s radius. \end{DoxyCompactList}\item 
+\hypertarget{class_ball_adcf84d9f9ae674709c7145b289f2c3b9}{}ngl\+::\+Vec3 \hyperlink{class_ball_adcf84d9f9ae674709c7145b289f2c3b9}{get\+Position} () const \label{class_ball_adcf84d9f9ae674709c7145b289f2c3b9}
+
+\begin{DoxyCompactList}\small\item\em Returns the ball\textquotesingle{}s position. \end{DoxyCompactList}\item 
+\hypertarget{class_ball_acea6bc58341f19b42fa3036e07f3e363}{}ngl\+::\+Vec3 \hyperlink{class_ball_acea6bc58341f19b42fa3036e07f3e363}{get\+Velocity} () const \label{class_ball_acea6bc58341f19b42fa3036e07f3e363}
+
+\begin{DoxyCompactList}\small\item\em Returns the ball\textquotesingle{}s velocity. \end{DoxyCompactList}\item 
+\hypertarget{class_ball_a27052308f4e776f2c626da88e1b5e840}{}ngl\+::\+Real \hyperlink{class_ball_a27052308f4e776f2c626da88e1b5e840}{get\+Radius} () const \label{class_ball_a27052308f4e776f2c626da88e1b5e840}
+
+\begin{DoxyCompactList}\small\item\em Returns the ball\textquotesingle{}s radius. \end{DoxyCompactList}\item 
+\hypertarget{class_ball_a97d273f777a59e0be7ffbf4bef209454}{}ngl\+::\+Material \hyperlink{class_ball_a97d273f777a59e0be7ffbf4bef209454}{get\+Material} () const \label{class_ball_a97d273f777a59e0be7ffbf4bef209454}
+
+\begin{DoxyCompactList}\small\item\em Returns the ball\textquotesingle{}s material. \end{DoxyCompactList}\item 
+void \hyperlink{class_ball_a2b9b447d1971e8de179e5e266e37114b}{draw} (const std\+::string \&\+\_\+shader, ngl\+::\+Camera $\ast$\+\_\+cam)
+\begin{DoxyCompactList}\small\item\em draws the mesh using the transform stack \end{DoxyCompactList}\item 
+void \hyperlink{class_ball_a326e028f9889e8d7900c9d4d0d9f617e}{generate\+Pos} (ngl\+::\+Real \+\_\+box\+Width)
+\begin{DoxyCompactList}\small\item\em Uses a random float generator to give the ball a new position. \end{DoxyCompactList}\item 
+\hypertarget{class_ball_aca5fc0e9ccbbad1689834d6c364d24b0}{}void \hyperlink{class_ball_aca5fc0e9ccbbad1689834d6c364d24b0}{generate\+Vel} ()\label{class_ball_aca5fc0e9ccbbad1689834d6c364d24b0}
+
+\begin{DoxyCompactList}\small\item\em Uses a random float generator to give the ball a new velocity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_ball}{Ball} class, used to define the ball\textquotesingle{}s attributes and access methods. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_ball_a2b9b447d1971e8de179e5e266e37114b}{}\index{Ball@{Ball}!draw@{draw}}
+\index{draw@{draw}!Ball@{Ball}}
+\subsubsection[{draw(const std\+::string \&\+\_\+shader, ngl\+::\+Camera $\ast$\+\_\+cam)}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\+::draw (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{\+\_\+shader, }
+\item[{ngl\+::\+Camera $\ast$}]{\+\_\+cam}
+\end{DoxyParamCaption}
+)}\label{class_ball_a2b9b447d1971e8de179e5e266e37114b}
+
+
+draws the mesh using the transform stack 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \&\+\_\+shader} & the shader used to draw \\
+\hline
+{\em $\ast$\+\_\+cam} & the viewing camera \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_ball_a326e028f9889e8d7900c9d4d0d9f617e}{}\index{Ball@{Ball}!generate\+Pos@{generate\+Pos}}
+\index{generate\+Pos@{generate\+Pos}!Ball@{Ball}}
+\subsubsection[{generate\+Pos(ngl\+::\+Real \+\_\+box\+Width)}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\+::generate\+Pos (
+\begin{DoxyParamCaption}
+\item[{ngl\+::\+Real}]{\+\_\+box\+Width}
+\end{DoxyParamCaption}
+)}\label{class_ball_a326e028f9889e8d7900c9d4d0d9f617e}
+
+
+Uses a random float generator to give the ball a new position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+box\+Width} & width of the box \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_ball_a0b2248494bb869c889847fe7110a6b66}{}\index{Ball@{Ball}!set\+Position@{set\+Position}}
+\index{set\+Position@{set\+Position}!Ball@{Ball}}
+\subsubsection[{set\+Position(const ngl\+::\+Vec3 \+\_\+pos)}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\+::set\+Position (
+\begin{DoxyParamCaption}
+\item[{const ngl\+::\+Vec3}]{\+\_\+pos}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_ball_a0b2248494bb869c889847fe7110a6b66}
+
+
+Sets the ball\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+pos} & the new position \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_ball_a01f40cdd20529453aeed3c5a62c480bd}{}\index{Ball@{Ball}!set\+Radius@{set\+Radius}}
+\index{set\+Radius@{set\+Radius}!Ball@{Ball}}
+\subsubsection[{set\+Radius(const ngl\+::\+Real \+\_\+r)}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\+::set\+Radius (
+\begin{DoxyParamCaption}
+\item[{const ngl\+::\+Real}]{\+\_\+r}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_ball_a01f40cdd20529453aeed3c5a62c480bd}
+
+
+Sets the ball\textquotesingle{}s radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+r} & the new radius \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_ball_abf1da28d789d938eac0f8070e8c35514}{}\index{Ball@{Ball}!set\+Velocity@{set\+Velocity}}
+\index{set\+Velocity@{set\+Velocity}!Ball@{Ball}}
+\subsubsection[{set\+Velocity(const ngl\+::\+Vec3 \+\_\+v)}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\+::set\+Velocity (
+\begin{DoxyParamCaption}
+\item[{const ngl\+::\+Vec3}]{\+\_\+v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_ball_abf1da28d789d938eac0f8070e8c35514}
+
+
+Sets the ball\textquotesingle{}s velocity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+v} & the new velocity \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{_ball_8h}{Ball.\+h}\item 
+src/Ball.\+cpp\end{DoxyCompactItemize}

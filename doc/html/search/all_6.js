@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['qt_5fmeta_5fstringdata_5fopenglwindow_5ft',['qt_meta_stringdata_OpenGLWindow_t',['../structqt__meta__stringdata___open_g_l_window__t.html',1,'']]]
+  ['openglwindow',['OpenGLWindow',['../class_open_g_l_window.html',1,'OpenGLWindow'],['../class_open_g_l_window.html#a2fd92afd17361a60e058dc5433c316af',1,'OpenGLWindow::OpenGLWindow()']]],
+  ['openglwindow_2eh',['OpenGLWindow.h',['../_open_g_l_window_8h.html',1,'']]]
 ];

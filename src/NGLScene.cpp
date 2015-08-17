@@ -28,9 +28,6 @@ NGLScene::NGLScene(QWindow *_parent) : OpenGLWindow(_parent)
   m_batPush = false;
   m_batPos = ngl::Vec3(0,0,(-(15+s_batGap)));
 
-  // now clear the key set
-  m_keysPressed.clear();
-
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -53,7 +50,7 @@ void NGLScene::resizeEvent(QResizeEvent *_event )
     // set the viewport for openGL
     glViewport(0,0,w,h);
     // now set the camera size values as the screen size has changed
-    m_cam->setShape(45f,(float)w/h,0.05f,350.0f);
+    m_cam->setShape(45,(float)w/h,0.05,350.0);
     renderLater();
   }
 }

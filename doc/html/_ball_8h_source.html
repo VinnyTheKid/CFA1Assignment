@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.10"/>
-<title>CFA1 Assignment: include/Ball.h Source File</title>
+<title>Dink!: include/Ball.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,9 +23,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">CFA1 Assignment
+   <div id="projectname">Dink!
    </div>
-   <div id="projectbrief">Dink! game - Vincent Clifton</div>
+   <div id="projectbrief">A simple physics based game by Vincent Clifton</div>
   </td>
  </tr>
  </tbody>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Ball.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef BALL_H</span></div>
+<a href="_ball_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef BALL_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define BALL_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;ngl/Camera.h&gt;</span></div>
@@ -100,37 +100,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_ball.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_ball.html">Ball</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span> :</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="class_ball.html">Ball</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">void</span> draw(<span class="keyword">const</span> std::string &amp;_shader, ngl::Camera *_cam );<span class="comment">//called in drawScene</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> setPosition(   <span class="keyword">const</span> ngl::Vec3 _pos ){m_pos = _pos;}<span class="comment">//</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> setVelocity(   <span class="keyword">const</span> ngl::Vec3 _v) {m_v=_v;}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> setRadius( <span class="keyword">const</span> ngl::Real _r) {m_r=_r;}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keyword">inline</span> ngl::Vec3 getPosition()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_pos;}</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">inline</span> ngl::Vec3 getVelocity()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_v;}</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">inline</span> ngl::Real getRadius()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_r;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">inline</span> std::string getSource()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_source;}<span class="comment">//string containing file location</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">inline</span> ngl::Material getMaterial()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_material;}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">void</span> generatePos(ngl::Real _boxWidth);<span class="comment">//make a vec3 to use for position once a goal has been scored</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">void</span> generateVel();<span class="comment">//make a vec3 to use for the starting velocity once a goal has been scored. Needs calibration</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  std::string m_source;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  ngl::Vec3 m_pos;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  ngl::Vec3 m_v;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  ngl::Real m_r;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  ngl::Obj *m_mesh;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  ngl::Transformation m_transform;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  ngl::Material m_material;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif // BALL_H</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="ttc" id="class_ball_html"><div class="ttname"><a href="class_ball.html">Ball</a></div><div class="ttdef"><b>Definition:</b> Ball.h:14</div></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//----------------------------------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"></span><span class="comment">//----------------------------------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_ball.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_ball.html">Ball</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span> :</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="class_ball.html#a86a144d3dad6c953e422e32435923bbb">Ball</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_ball.html#a0b2248494bb869c889847fe7110a6b66">   31</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_ball.html#a0b2248494bb869c889847fe7110a6b66">setPosition</a>(  <span class="keyword">const</span> ngl::Vec3 _pos){m_pos = _pos;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_ball.html#abf1da28d789d938eac0f8070e8c35514">   34</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_ball.html#abf1da28d789d938eac0f8070e8c35514">setVelocity</a>(   <span class="keyword">const</span> ngl::Vec3 _v) {m_v=_v;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_ball.html#a01f40cdd20529453aeed3c5a62c480bd">   37</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_ball.html#a01f40cdd20529453aeed3c5a62c480bd">setRadius</a>( <span class="keyword">const</span> ngl::Real _r) {m_r=_r;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_ball.html#adcf84d9f9ae674709c7145b289f2c3b9">   39</a></span>&#160;  <span class="keyword">inline</span> ngl::Vec3 <a class="code" href="class_ball.html#adcf84d9f9ae674709c7145b289f2c3b9">getPosition</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_pos;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_ball.html#acea6bc58341f19b42fa3036e07f3e363">   41</a></span>&#160;  <span class="keyword">inline</span> ngl::Vec3 <a class="code" href="class_ball.html#acea6bc58341f19b42fa3036e07f3e363">getVelocity</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_v;}</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_ball.html#a27052308f4e776f2c626da88e1b5e840">   43</a></span>&#160;  <span class="keyword">inline</span> ngl::Real <a class="code" href="class_ball.html#a27052308f4e776f2c626da88e1b5e840">getRadius</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_r;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_ball.html#a97d273f777a59e0be7ffbf4bef209454">   45</a></span>&#160;  <span class="keyword">inline</span> ngl::Material <a class="code" href="class_ball.html#a97d273f777a59e0be7ffbf4bef209454">getMaterial</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_material;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_ball.html#a2b9b447d1971e8de179e5e266e37114b">draw</a>(<span class="keyword">const</span> std::string &amp;_shader, ngl::Camera *_cam );</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_ball.html#a326e028f9889e8d7900c9d4d0d9f617e">generatePos</a>(ngl::Real _boxWidth);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_ball.html#aca5fc0e9ccbbad1689834d6c364d24b0">generateVel</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  ngl::Vec3 m_pos;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  ngl::Vec3 m_v;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  ngl::Real m_r;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  ngl::Obj *m_mesh;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  ngl::Transformation m_transform;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  ngl::Material m_material;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;};</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif // BALL_H</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="ttc" id="class_ball_html_a97d273f777a59e0be7ffbf4bef209454"><div class="ttname"><a href="class_ball.html#a97d273f777a59e0be7ffbf4bef209454">Ball::getMaterial</a></div><div class="ttdeci">ngl::Material getMaterial() const </div><div class="ttdoc">Returns the ball&#39;s material. </div><div class="ttdef"><b>Definition:</b> Ball.h:45</div></div>
+<div class="ttc" id="class_ball_html"><div class="ttname"><a href="class_ball.html">Ball</a></div><div class="ttdoc">The Ball class, used to define the ball&#39;s attributes and access methods. </div><div class="ttdef"><b>Definition:</b> Ball.h:24</div></div>
+<div class="ttc" id="class_ball_html_a0b2248494bb869c889847fe7110a6b66"><div class="ttname"><a href="class_ball.html#a0b2248494bb869c889847fe7110a6b66">Ball::setPosition</a></div><div class="ttdeci">void setPosition(const ngl::Vec3 _pos)</div><div class="ttdoc">Sets the ball&#39;s position. </div><div class="ttdef"><b>Definition:</b> Ball.h:31</div></div>
+<div class="ttc" id="class_ball_html_acea6bc58341f19b42fa3036e07f3e363"><div class="ttname"><a href="class_ball.html#acea6bc58341f19b42fa3036e07f3e363">Ball::getVelocity</a></div><div class="ttdeci">ngl::Vec3 getVelocity() const </div><div class="ttdoc">Returns the ball&#39;s velocity. </div><div class="ttdef"><b>Definition:</b> Ball.h:41</div></div>
+<div class="ttc" id="class_ball_html_aca5fc0e9ccbbad1689834d6c364d24b0"><div class="ttname"><a href="class_ball.html#aca5fc0e9ccbbad1689834d6c364d24b0">Ball::generateVel</a></div><div class="ttdeci">void generateVel()</div><div class="ttdoc">Uses a random float generator to give the ball a new velocity. </div><div class="ttdef"><b>Definition:</b> Ball.cpp:100</div></div>
+<div class="ttc" id="class_ball_html_a326e028f9889e8d7900c9d4d0d9f617e"><div class="ttname"><a href="class_ball.html#a326e028f9889e8d7900c9d4d0d9f617e">Ball::generatePos</a></div><div class="ttdeci">void generatePos(ngl::Real _boxWidth)</div><div class="ttdoc">Uses a random float generator to give the ball a new position. </div><div class="ttdef"><b>Definition:</b> Ball.cpp:84</div></div>
+<div class="ttc" id="class_ball_html_a27052308f4e776f2c626da88e1b5e840"><div class="ttname"><a href="class_ball.html#a27052308f4e776f2c626da88e1b5e840">Ball::getRadius</a></div><div class="ttdeci">ngl::Real getRadius() const </div><div class="ttdoc">Returns the ball&#39;s radius. </div><div class="ttdef"><b>Definition:</b> Ball.h:43</div></div>
+<div class="ttc" id="class_ball_html_abf1da28d789d938eac0f8070e8c35514"><div class="ttname"><a href="class_ball.html#abf1da28d789d938eac0f8070e8c35514">Ball::setVelocity</a></div><div class="ttdeci">void setVelocity(const ngl::Vec3 _v)</div><div class="ttdoc">Sets the ball&#39;s velocity. </div><div class="ttdef"><b>Definition:</b> Ball.h:34</div></div>
+<div class="ttc" id="class_ball_html_a86a144d3dad6c953e422e32435923bbb"><div class="ttname"><a href="class_ball.html#a86a144d3dad6c953e422e32435923bbb">Ball::Ball</a></div><div class="ttdeci">Ball()</div><div class="ttdoc">ctor </div><div class="ttdef"><b>Definition:</b> Ball.cpp:9</div></div>
+<div class="ttc" id="class_ball_html_a2b9b447d1971e8de179e5e266e37114b"><div class="ttname"><a href="class_ball.html#a2b9b447d1971e8de179e5e266e37114b">Ball::draw</a></div><div class="ttdeci">void draw(const std::string &amp;_shader, ngl::Camera *_cam)</div><div class="ttdoc">draws the mesh using the transform stack </div><div class="ttdef"><b>Definition:</b> Ball.cpp:30</div></div>
+<div class="ttc" id="class_ball_html_a01f40cdd20529453aeed3c5a62c480bd"><div class="ttname"><a href="class_ball.html#a01f40cdd20529453aeed3c5a62c480bd">Ball::setRadius</a></div><div class="ttdeci">void setRadius(const ngl::Real _r)</div><div class="ttdoc">Sets the ball&#39;s radius. </div><div class="ttdef"><b>Definition:</b> Ball.h:37</div></div>
+<div class="ttc" id="class_ball_html_adcf84d9f9ae674709c7145b289f2c3b9"><div class="ttname"><a href="class_ball.html#adcf84d9f9ae674709c7145b289f2c3b9">Ball::getPosition</a></div><div class="ttdeci">ngl::Vec3 getPosition() const </div><div class="ttdoc">Returns the ball&#39;s position. </div><div class="ttdef"><b>Definition:</b> Ball.h:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

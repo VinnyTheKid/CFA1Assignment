@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.10"/>
-<title>CFA1 Assignment: Box Class Reference</title>
+<title>Dink!: Box Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,9 +23,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">CFA1 Assignment
+   <div id="projectname">Dink!
    </div>
-   <div id="projectbrief">Dink! game - Vincent Clifton</div>
+   <div id="projectbrief">A simple physics based game by Vincent Clifton</div>
   </td>
  </tr>
  </tbody>
@@ -85,52 +85,77 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_box-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Box Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="class_box.html" title="The Box class, used to define the box&#39;s attributes and access methods. ">Box</a> class, used to define the box's attributes and access methods.  
+ <a href="class_box.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_box_8h_source.html">Box.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a279b2b30d9b70c6caf550491fc64dbf1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a279b2b30d9b70c6caf550491fc64dbf1"></a>
-ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getCentre</b> ()</td></tr>
-<tr class="separator:a279b2b30d9b70c6caf550491fc64dbf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca78d7db44972bfa78d46b7bbc8796f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca78d7db44972bfa78d46b7bbc8796f6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_box.html#aca78d7db44972bfa78d46b7bbc8796f6">Box</a> ()</td></tr>
+<tr class="memdesc:aca78d7db44972bfa78d46b7bbc8796f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ctor <br /></td></tr>
+<tr class="separator:aca78d7db44972bfa78d46b7bbc8796f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00b3e37cb5fba4097557ea9d9074d89f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00b3e37cb5fba4097557ea9d9074d89f"></a>
-ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><b>getWidth</b> ()</td></tr>
+ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_box.html#a00b3e37cb5fba4097557ea9d9074d89f">getWidth</a> ()</td></tr>
+<tr class="memdesc:a00b3e37cb5fba4097557ea9d9074d89f"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the box's width <br /></td></tr>
 <tr class="separator:a00b3e37cb5fba4097557ea9d9074d89f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc7c98fba087aceb295cf1629eab6450"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc7c98fba087aceb295cf1629eab6450"></a>
-ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><b>getHeight</b> ()</td></tr>
+ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_box.html#abc7c98fba087aceb295cf1629eab6450">getHeight</a> ()</td></tr>
+<tr class="memdesc:abc7c98fba087aceb295cf1629eab6450"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the box's height <br /></td></tr>
 <tr class="separator:abc7c98fba087aceb295cf1629eab6450"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8499ad434a289212dd226ed540e1180"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8499ad434a289212dd226ed540e1180"></a>
-ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><b>getDepth</b> ()</td></tr>
+ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_box.html#af8499ad434a289212dd226ed540e1180">getDepth</a> ()</td></tr>
+<tr class="memdesc:af8499ad434a289212dd226ed540e1180"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the box's depth <br /></td></tr>
 <tr class="separator:af8499ad434a289212dd226ed540e1180"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb7764c39ba17be6c83364c8284c263a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb7764c39ba17be6c83364c8284c263a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (const std::string &amp;_shader, ngl::Camera *_cam)</td></tr>
+<tr class="memitem:adb7764c39ba17be6c83364c8284c263a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_box.html#adb7764c39ba17be6c83364c8284c263a">draw</a> (const std::string &amp;_shader, ngl::Camera *_cam)</td></tr>
+<tr class="memdesc:adb7764c39ba17be6c83364c8284c263a"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws the box's mesh using the transform stack  <a href="#adb7764c39ba17be6c83364c8284c263a">More...</a><br /></td></tr>
 <tr class="separator:adb7764c39ba17be6c83364c8284c263a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:adabd0aea6d31def1f7703041f88e52d7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adabd0aea6d31def1f7703041f88e52d7"></a>
-ngl::Obj *&#160;</td><td class="memItemRight" valign="bottom"><b>m_mesh</b></td></tr>
-<tr class="separator:adabd0aea6d31def1f7703041f88e52d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13b2ae33e5bec0b35805e1ab1f0b7098"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13b2ae33e5bec0b35805e1ab1f0b7098"></a>
-ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><b>m_centre</b></td></tr>
-<tr class="separator:a13b2ae33e5bec0b35805e1ab1f0b7098"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a948469722869890482b4be180295e305"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a948469722869890482b4be180295e305"></a>
-ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><b>m_width</b></td></tr>
-<tr class="separator:a948469722869890482b4be180295e305"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add13d1ac80106b4f09d594d9c25b3b47"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add13d1ac80106b4f09d594d9c25b3b47"></a>
-ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><b>m_height</b></td></tr>
-<tr class="separator:add13d1ac80106b4f09d594d9c25b3b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14e3f352c89c36c35bd258d92cbea91a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14e3f352c89c36c35bd258d92cbea91a"></a>
-ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><b>m_depth</b></td></tr>
-<tr class="separator:a14e3f352c89c36c35bd258d92cbea91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17c08a8e1d1dc0f8c320a171cb34b26d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17c08a8e1d1dc0f8c320a171cb34b26d"></a>
-ngl::Transformation&#160;</td><td class="memItemRight" valign="bottom"><b>m_transform</b></td></tr>
-<tr class="separator:a17c08a8e1d1dc0f8c320a171cb34b26d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_box.html" title="The Box class, used to define the box&#39;s attributes and access methods. ">Box</a> class, used to define the box's attributes and access methods. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="adb7764c39ba17be6c83364c8284c263a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Box::draw </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_shader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ngl::Camera *&#160;</td>
+          <td class="paramname"><em>_cam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws the box's mesh using the transform stack </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">&amp;_shader</td><td>the shader used to draw </td></tr>
+    <tr><td class="paramname">*_cam</td><td>the viewing camera </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_box_8h_source.html">Box.h</a></li>
 <li>src/Box.cpp</li>

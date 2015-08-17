@@ -7,6 +7,16 @@
 #include <ngl/Transformation.h>
 #include <cstdlib>
 
+//----------------------------------------------------------------------------------------------------------------------
+/// @file Goal.h
+/// @brief The Goal class, used to define the goal's attributes and access methods.
+/// @author Vincent Clifton
+/// @version 1.0
+/// @date 17/8/2015
+/// @class Goal
+/// @brief The Goal class, used to define the goal's attributes and access methods.
+//----------------------------------------------------------------------------------------------------------------------
+
 class Goal
 {
 public:

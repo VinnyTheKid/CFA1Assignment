@@ -153,7 +153,8 @@ private:
   /// @brief this method detects whether the ball has collided with a goal, and if so
   /// increases the score and tells both ball and goal to generate new attributes
   //----------------------------------------------------------------------------------------------------------------------
-
+  void goalCollision();
+};
 
 
 #endif

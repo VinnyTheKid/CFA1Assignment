@@ -58,7 +58,7 @@ void Goal::generatePos(ngl::Real _boxWidth, ngl::Real _boxHeight, ngl::Real _box
 
 void Goal::increaseDifficulty(const int _currentScore)
 {
-  int mod = _currentscore%5;
+  int mod = _currentScore%5;
   if(mod == 0)
   {
     m_scale -= s_DIFFINCREMENT;

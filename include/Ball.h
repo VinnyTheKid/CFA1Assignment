@@ -10,12 +10,25 @@
 #include <random>
 #include <time.h>
 
+//----------------------------------------------------------------------------------------------------------------------
+/// @file Ball.h
+/// @brief The Ball class, used to define the ball's attributes and access methods.
+/// @author Vincent Clifton
+/// @version 1.0
+/// @date 17/8/2015
+/// @class Ball
+/// @brief The Ball class, used to define the ball's attributes and access methods.
+//----------------------------------------------------------------------------------------------------------------------
+
 
 class Ball
 {
 public :
   /// @brief ctor
   Ball();
+  /// @brief Sets the ball's position
+  /// @param _pos the new position
+  inline void setPosition(  const ngl::Vec3 _pos){m_pos = _pos;}
   /// @brief Sets the ball's velocity
   /// @param _v the new velocity
   inline void setVelocity(   const ngl::Vec3 _v) {m_v=_v;}

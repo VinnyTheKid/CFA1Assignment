@@ -7,6 +7,16 @@
 #include <ngl/Transformation.h>
 #include <ngl/Material.h>
 
+//----------------------------------------------------------------------------------------------------------------------
+/// @file Bat.h
+/// @brief The Bat class, used to define the bat's attributes and access methods.
+/// @author Vincent Clifton
+/// @version 1.0
+/// @date 17/8/2015
+/// @class Bat
+/// @brief The Bat class, used to define the bat's attributes and access methods.
+//----------------------------------------------------------------------------------------------------------------------
+
 class Bat
 {
 public :
@@ -15,6 +25,15 @@ public :
   /// @brief Sets the bat's mouse-controlled position
   /// @param _mousePos the new position
   inline void setMousePos(  const ngl::Vec3 _mousePos){m_mousePos = _mousePos;}
+  /// @brief Sets the bat's push-controlled position
+  /// @param _pushPos the new position
+  inline void setPushPos(  const ngl::Vec3 _pushPos){m_pushPos = _pushPos;}
+  /// @brief Sets the bat's push-controlled velocity
+  /// @param _pushV the new velocity
+  inline void setPushV(  const ngl::Vec3 _pushV){m_pushV = _pushV;}
+  /// @brief Sets the bat's push-controlled acceleration
+  /// @param _pushA the new acceleration
+  inline void setpushA(  const ngl::Vec3 _pushA){m_pushA = _pushA;}
   /// @brief Sets the bat's normal vector
   /// @param _normal the new normal vector
   inline void setNormal( const ngl::Vec3 _normal) {m_normal = _normal;}

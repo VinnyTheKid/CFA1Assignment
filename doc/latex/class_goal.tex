@@ -1,0 +1,98 @@
+\hypertarget{class_goal}{}\section{Goal Class Reference}
+\label{class_goal}\index{Goal@{Goal}}
+
+
+The \hyperlink{class_goal}{Goal} class, used to define the goal\textquotesingle{}s attributes and access methods.  
+
+
+
+
+{\ttfamily \#include $<$Goal.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_goal_aef5013c9bf548e51178f58da869d508a}{}\hyperlink{class_goal_aef5013c9bf548e51178f58da869d508a}{Goal} ()\label{class_goal_aef5013c9bf548e51178f58da869d508a}
+
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\hypertarget{class_goal_a41b52fb4aed63337a5894f986b8c40ee}{}ngl\+::\+Real \hyperlink{class_goal_a41b52fb4aed63337a5894f986b8c40ee}{get\+Radius} ()\label{class_goal_a41b52fb4aed63337a5894f986b8c40ee}
+
+\begin{DoxyCompactList}\small\item\em returns the scale of the goal \end{DoxyCompactList}\item 
+\hypertarget{class_goal_a638ba69f64454e4020b6de63f5ed48eb}{}ngl\+::\+Vec3 \hyperlink{class_goal_a638ba69f64454e4020b6de63f5ed48eb}{get\+Position} ()\label{class_goal_a638ba69f64454e4020b6de63f5ed48eb}
+
+\begin{DoxyCompactList}\small\item\em returns the position of the goal \end{DoxyCompactList}\item 
+void \hyperlink{class_goal_ae1086a08dc341ee6c75141fc2fa7a7ce}{draw} (const std\+::string \&\+\_\+shader, ngl\+::\+Camera $\ast$\+\_\+cam)
+\begin{DoxyCompactList}\small\item\em draws the mesh using the transform stack \end{DoxyCompactList}\item 
+void \hyperlink{class_goal_a8258795f65e20e894229ecccd5109411}{generate\+Pos} (ngl\+::\+Real \+\_\+box\+Width, ngl\+::\+Real \+\_\+box\+Height, ngl\+::\+Real \+\_\+box\+Depth)
+\begin{DoxyCompactList}\small\item\em Uses a random float generator to give the goal a new position. \end{DoxyCompactList}\item 
+void \hyperlink{class_goal_aac120704787f96925565b70ff073af38}{increase\+Difficulty} (const int \+\_\+current\+Score)
+\begin{DoxyCompactList}\small\item\em changes the scale of the goal \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_goal}{Goal} class, used to define the goal\textquotesingle{}s attributes and access methods. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_goal_ae1086a08dc341ee6c75141fc2fa7a7ce}{}\index{Goal@{Goal}!draw@{draw}}
+\index{draw@{draw}!Goal@{Goal}}
+\subsubsection[{draw(const std\+::string \&\+\_\+shader, ngl\+::\+Camera $\ast$\+\_\+cam)}]{\setlength{\rightskip}{0pt plus 5cm}void Goal\+::draw (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{\+\_\+shader, }
+\item[{ngl\+::\+Camera $\ast$}]{\+\_\+cam}
+\end{DoxyParamCaption}
+)}\label{class_goal_ae1086a08dc341ee6c75141fc2fa7a7ce}
+
+
+draws the mesh using the transform stack 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \&\+\_\+shader} & the shader used to draw \\
+\hline
+{\em $\ast$\+\_\+cam} & the viewing camera \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_goal_a8258795f65e20e894229ecccd5109411}{}\index{Goal@{Goal}!generate\+Pos@{generate\+Pos}}
+\index{generate\+Pos@{generate\+Pos}!Goal@{Goal}}
+\subsubsection[{generate\+Pos(ngl\+::\+Real \+\_\+box\+Width, ngl\+::\+Real \+\_\+box\+Height, ngl\+::\+Real \+\_\+box\+Depth)}]{\setlength{\rightskip}{0pt plus 5cm}void Goal\+::generate\+Pos (
+\begin{DoxyParamCaption}
+\item[{ngl\+::\+Real}]{\+\_\+box\+Width, }
+\item[{ngl\+::\+Real}]{\+\_\+box\+Height, }
+\item[{ngl\+::\+Real}]{\+\_\+box\+Depth}
+\end{DoxyParamCaption}
+)}\label{class_goal_a8258795f65e20e894229ecccd5109411}
+
+
+Uses a random float generator to give the goal a new position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+box\+Width} & width of the box \\
+\hline
+{\em \+\_\+box\+Height} & height of the box \\
+\hline
+{\em \+\_\+box\+Depth} & depth of the box \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_goal_aac120704787f96925565b70ff073af38}{}\index{Goal@{Goal}!increase\+Difficulty@{increase\+Difficulty}}
+\index{increase\+Difficulty@{increase\+Difficulty}!Goal@{Goal}}
+\subsubsection[{increase\+Difficulty(const int \+\_\+current\+Score)}]{\setlength{\rightskip}{0pt plus 5cm}void Goal\+::increase\+Difficulty (
+\begin{DoxyParamCaption}
+\item[{const int}]{\+\_\+current\+Score}
+\end{DoxyParamCaption}
+)}\label{class_goal_aac120704787f96925565b70ff073af38}
+
+
+changes the scale of the goal 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & current score \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{_goal_8h}{Goal.\+h}\item 
+src/Goal.\+cpp\end{DoxyCompactItemize}

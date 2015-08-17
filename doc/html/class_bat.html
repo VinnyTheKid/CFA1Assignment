@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.10"/>
-<title>CFA1 Assignment: Bat Class Reference</title>
+<title>Dink!: Bat Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,9 +23,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">CFA1 Assignment
+   <div id="projectname">Dink!
    </div>
-   <div id="projectbrief">Dink! game - Vincent Clifton</div>
+   <div id="projectbrief">A simple physics based game by Vincent Clifton</div>
   </td>
  </tr>
  </tbody>
@@ -90,82 +90,360 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Bat Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="class_bat.html" title="The Bat class, used to define the bat&#39;s attributes and access methods. ">Bat</a> class, used to define the bat's attributes and access methods.  
+ <a href="class_bat.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_bat_8h_source.html">Bat.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a07907b3c6e056575b2b20fcbf2d6c679"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07907b3c6e056575b2b20fcbf2d6c679"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (const std::string &amp;_shader, ngl::Camera *_cam)</td></tr>
-<tr class="separator:a07907b3c6e056575b2b20fcbf2d6c679"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a243a43c23e389b55cb85167fdf657ceb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a243a43c23e389b55cb85167fdf657ceb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setMousePos</b> (const ngl::Vec3 _mousePos)</td></tr>
+<tr class="memitem:ac231b3a270f82b72dace8be983a6ee6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac231b3a270f82b72dace8be983a6ee6c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#ac231b3a270f82b72dace8be983a6ee6c">Bat</a> ()</td></tr>
+<tr class="memdesc:ac231b3a270f82b72dace8be983a6ee6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ctor <br /></td></tr>
+<tr class="separator:ac231b3a270f82b72dace8be983a6ee6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a243a43c23e389b55cb85167fdf657ceb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a243a43c23e389b55cb85167fdf657ceb">setMousePos</a> (const ngl::Vec3 _mousePos)</td></tr>
+<tr class="memdesc:a243a43c23e389b55cb85167fdf657ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the bat's mouse-controlled position.  <a href="#a243a43c23e389b55cb85167fdf657ceb">More...</a><br /></td></tr>
 <tr class="separator:a243a43c23e389b55cb85167fdf657ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa461a3fdabc56f4de40e612401c7130c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa461a3fdabc56f4de40e612401c7130c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setMouseV</b> (const ngl::Vec3 _mouseV)</td></tr>
-<tr class="separator:aa461a3fdabc56f4de40e612401c7130c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a701c00889957e06bd4e78f8e5bc2ec85"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a701c00889957e06bd4e78f8e5bc2ec85"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setNormal</b> (const ngl::Vec3 _normal)</td></tr>
-<tr class="separator:a701c00889957e06bd4e78f8e5bc2ec85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7afffdf395f73c1ac05092a81fa863e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac7afffdf395f73c1ac05092a81fa863e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setRadius</b> (const ngl::Real _r)</td></tr>
-<tr class="separator:ac7afffdf395f73c1ac05092a81fa863e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e7c34ffd00a351cbfbc0c4389bfa43e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e7c34ffd00a351cbfbc0c4389bfa43e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPushV</b> (const ngl::Vec3 _pushV)</td></tr>
-<tr class="separator:a7e7c34ffd00a351cbfbc0c4389bfa43e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b724cc01ac4989c588d8499c8ef758a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b724cc01ac4989c588d8499c8ef758a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPushA</b> (const ngl::Vec3 _pushA)</td></tr>
-<tr class="separator:a0b724cc01ac4989c588d8499c8ef758a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17b4c6b2b70a2800a952e16022f47820"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17b4c6b2b70a2800a952e16022f47820"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPushPos</b> (const ngl::Vec3 _pushPos)</td></tr>
+<tr class="memitem:a17b4c6b2b70a2800a952e16022f47820"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a17b4c6b2b70a2800a952e16022f47820">setPushPos</a> (const ngl::Vec3 _pushPos)</td></tr>
+<tr class="memdesc:a17b4c6b2b70a2800a952e16022f47820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the bat's push-controlled position.  <a href="#a17b4c6b2b70a2800a952e16022f47820">More...</a><br /></td></tr>
 <tr class="separator:a17b4c6b2b70a2800a952e16022f47820"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfdb8dcdc698f12a950911f4f7c21995"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfdb8dcdc698f12a950911f4f7c21995"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setOrient</b> (const ngl::Vec3 _orient)</td></tr>
+<tr class="memitem:a7e7c34ffd00a351cbfbc0c4389bfa43e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a7e7c34ffd00a351cbfbc0c4389bfa43e">setPushV</a> (const ngl::Vec3 _pushV)</td></tr>
+<tr class="memdesc:a7e7c34ffd00a351cbfbc0c4389bfa43e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the bat's push-controlled velocity.  <a href="#a7e7c34ffd00a351cbfbc0c4389bfa43e">More...</a><br /></td></tr>
+<tr class="separator:a7e7c34ffd00a351cbfbc0c4389bfa43e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00e563db4fad9c3a90eb72b5e5e68bc9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a00e563db4fad9c3a90eb72b5e5e68bc9">setpushA</a> (const ngl::Vec3 _pushA)</td></tr>
+<tr class="memdesc:a00e563db4fad9c3a90eb72b5e5e68bc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the bat's push-controlled acceleration.  <a href="#a00e563db4fad9c3a90eb72b5e5e68bc9">More...</a><br /></td></tr>
+<tr class="separator:a00e563db4fad9c3a90eb72b5e5e68bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a701c00889957e06bd4e78f8e5bc2ec85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a701c00889957e06bd4e78f8e5bc2ec85">setNormal</a> (const ngl::Vec3 _normal)</td></tr>
+<tr class="memdesc:a701c00889957e06bd4e78f8e5bc2ec85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the bat's normal vector.  <a href="#a701c00889957e06bd4e78f8e5bc2ec85">More...</a><br /></td></tr>
+<tr class="separator:a701c00889957e06bd4e78f8e5bc2ec85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfdb8dcdc698f12a950911f4f7c21995"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#acfdb8dcdc698f12a950911f4f7c21995">setOrient</a> (const ngl::Vec3 _orient)</td></tr>
+<tr class="memdesc:acfdb8dcdc698f12a950911f4f7c21995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the bat's orientation.  <a href="#acfdb8dcdc698f12a950911f4f7c21995">More...</a><br /></td></tr>
 <tr class="separator:acfdb8dcdc698f12a950911f4f7c21995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7afffdf395f73c1ac05092a81fa863e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#ac7afffdf395f73c1ac05092a81fa863e">setRadius</a> (const ngl::Real _r)</td></tr>
+<tr class="memdesc:ac7afffdf395f73c1ac05092a81fa863e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the bat's radius.  <a href="#ac7afffdf395f73c1ac05092a81fa863e">More...</a><br /></td></tr>
+<tr class="separator:ac7afffdf395f73c1ac05092a81fa863e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7df35992554d7beddebfc3d1a2284891"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7df35992554d7beddebfc3d1a2284891"></a>
-ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getPos</b> ()</td></tr>
+ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a7df35992554d7beddebfc3d1a2284891">getPos</a> ()</td></tr>
+<tr class="memdesc:a7df35992554d7beddebfc3d1a2284891"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the bat's true global position <br /></td></tr>
 <tr class="separator:a7df35992554d7beddebfc3d1a2284891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84a84c1eaa37f6221282953f93e5b3d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84a84c1eaa37f6221282953f93e5b3d8"></a>
-ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getMousePos</b> ()</td></tr>
+ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a84a84c1eaa37f6221282953f93e5b3d8">getMousePos</a> ()</td></tr>
+<tr class="memdesc:a84a84c1eaa37f6221282953f93e5b3d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the bat's mouse-controlled position <br /></td></tr>
 <tr class="separator:a84a84c1eaa37f6221282953f93e5b3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d2038c9c42d793441795a15c0b0ffce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5d2038c9c42d793441795a15c0b0ffce"></a>
-ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getMouseV</b> ()</td></tr>
+ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a5d2038c9c42d793441795a15c0b0ffce">getMouseV</a> ()</td></tr>
+<tr class="memdesc:a5d2038c9c42d793441795a15c0b0ffce"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the bat's mouse-controlled velocity <br /></td></tr>
 <tr class="separator:a5d2038c9c42d793441795a15c0b0ffce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a552c9c5dc6e2fb8e1b3b3ab180d80605"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a552c9c5dc6e2fb8e1b3b3ab180d80605"></a>
-ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getNormal</b> ()</td></tr>
+ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a552c9c5dc6e2fb8e1b3b3ab180d80605">getNormal</a> ()</td></tr>
+<tr class="memdesc:a552c9c5dc6e2fb8e1b3b3ab180d80605"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the bat's normal <br /></td></tr>
 <tr class="separator:a552c9c5dc6e2fb8e1b3b3ab180d80605"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a4545f994b1f26ac9ebd1043f0fcb91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a4545f994b1f26ac9ebd1043f0fcb91"></a>
-ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><b>getRadius</b> () const </td></tr>
-<tr class="separator:a0a4545f994b1f26ac9ebd1043f0fcb91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29a52a25985df48a46eca5079e354853"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29a52a25985df48a46eca5079e354853"></a>
-ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getPushV</b> ()</td></tr>
+ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a29a52a25985df48a46eca5079e354853">getPushV</a> ()</td></tr>
+<tr class="memdesc:a29a52a25985df48a46eca5079e354853"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the bat's push-controlled velocity <br /></td></tr>
 <tr class="separator:a29a52a25985df48a46eca5079e354853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe01a9ede9e614596f408c894e03ca5a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe01a9ede9e614596f408c894e03ca5a"></a>
-ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getPushA</b> ()</td></tr>
+ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#afe01a9ede9e614596f408c894e03ca5a">getPushA</a> ()</td></tr>
+<tr class="memdesc:afe01a9ede9e614596f408c894e03ca5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the bat's push-controlled acceleration <br /></td></tr>
 <tr class="separator:afe01a9ede9e614596f408c894e03ca5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ac591209afc830d5f3a904d73efc9bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ac591209afc830d5f3a904d73efc9bb"></a>
-ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getPushPos</b> ()</td></tr>
+ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a8ac591209afc830d5f3a904d73efc9bb">getPushPos</a> ()</td></tr>
+<tr class="memdesc:a8ac591209afc830d5f3a904d73efc9bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the bat's push-controlled position <br /></td></tr>
 <tr class="separator:a8ac591209afc830d5f3a904d73efc9bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a4545f994b1f26ac9ebd1043f0fcb91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a4545f994b1f26ac9ebd1043f0fcb91"></a>
+ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a0a4545f994b1f26ac9ebd1043f0fcb91">getRadius</a> () const </td></tr>
+<tr class="memdesc:a0a4545f994b1f26ac9ebd1043f0fcb91"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the bat's radius <br /></td></tr>
+<tr class="separator:a0a4545f994b1f26ac9ebd1043f0fcb91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b91b886a5416294f9a75ea452148b28"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b91b886a5416294f9a75ea452148b28"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getPush</b> ()</td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a2b91b886a5416294f9a75ea452148b28">getPush</a> ()</td></tr>
+<tr class="memdesc:a2b91b886a5416294f9a75ea452148b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a flag for the state of the push command <br /></td></tr>
 <tr class="separator:a2b91b886a5416294f9a75ea452148b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7526f1fc3dbeb8b325a8151f09539518"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7526f1fc3dbeb8b325a8151f09539518"></a>
-ngl::Material&#160;</td><td class="memItemRight" valign="bottom"><b>getMaterial</b> ()</td></tr>
-<tr class="separator:a7526f1fc3dbeb8b325a8151f09539518"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b799c54fff78b0088831573bb7357bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b799c54fff78b0088831573bb7357bb"></a>
-ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><b>getPushDist</b> ()</td></tr>
+ngl::Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a6b799c54fff78b0088831573bb7357bb">getPushDist</a> ()</td></tr>
+<tr class="memdesc:a6b799c54fff78b0088831573bb7357bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the limit of the reach of a push <br /></td></tr>
 <tr class="separator:a6b799c54fff78b0088831573bb7357bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07907b3c6e056575b2b20fcbf2d6c679"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a07907b3c6e056575b2b20fcbf2d6c679">draw</a> (const std::string &amp;_shader, ngl::Camera *_cam)</td></tr>
+<tr class="memdesc:a07907b3c6e056575b2b20fcbf2d6c679"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws the bat  <a href="#a07907b3c6e056575b2b20fcbf2d6c679">More...</a><br /></td></tr>
+<tr class="separator:a07907b3c6e056575b2b20fcbf2d6c679"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6012876b0637a7867b3256296dd74f48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6012876b0637a7867b3256296dd74f48"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pushStart</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a6012876b0637a7867b3256296dd74f48">pushStart</a> ()</td></tr>
+<tr class="memdesc:a6012876b0637a7867b3256296dd74f48"><td class="mdescLeft">&#160;</td><td class="mdescRight">initiates the push command <br /></td></tr>
 <tr class="separator:a6012876b0637a7867b3256296dd74f48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e9d58e022c3a3871c66a35b6e150740"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e9d58e022c3a3871c66a35b6e150740"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pushPeak</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a2e9d58e022c3a3871c66a35b6e150740">pushPeak</a> ()</td></tr>
+<tr class="memdesc:a2e9d58e022c3a3871c66a35b6e150740"><td class="mdescLeft">&#160;</td><td class="mdescRight">initiated when bat has reached push limit <br /></td></tr>
 <tr class="separator:a2e9d58e022c3a3871c66a35b6e150740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e29871261f3bfec5c8cc5f5e2805815"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e29871261f3bfec5c8cc5f5e2805815"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pushStop</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bat.html#a9e29871261f3bfec5c8cc5f5e2805815">pushStop</a> ()</td></tr>
+<tr class="memdesc:a9e29871261f3bfec5c8cc5f5e2805815"><td class="mdescLeft">&#160;</td><td class="mdescRight">completes the push and returns mouse control <br /></td></tr>
 <tr class="separator:a9e29871261f3bfec5c8cc5f5e2805815"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_bat.html" title="The Bat class, used to define the bat&#39;s attributes and access methods. ">Bat</a> class, used to define the bat's attributes and access methods. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a07907b3c6e056575b2b20fcbf2d6c679"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bat::draw </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_shader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ngl::Camera *&#160;</td>
+          <td class="paramname"><em>_cam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws the bat </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">&amp;_shader</td><td>the shader used to draw </td></tr>
+    <tr><td class="paramname">*_cam</td><td>the viewing camera </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a243a43c23e389b55cb85167fdf657ceb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bat::setMousePos </td>
+          <td>(</td>
+          <td class="paramtype">const ngl::Vec3&#160;</td>
+          <td class="paramname"><em>_mousePos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the bat's mouse-controlled position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_mousePos</td><td>the new position </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a701c00889957e06bd4e78f8e5bc2ec85"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bat::setNormal </td>
+          <td>(</td>
+          <td class="paramtype">const ngl::Vec3&#160;</td>
+          <td class="paramname"><em>_normal</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the bat's normal vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_normal</td><td>the new normal vector </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="acfdb8dcdc698f12a950911f4f7c21995"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bat::setOrient </td>
+          <td>(</td>
+          <td class="paramtype">const ngl::Vec3&#160;</td>
+          <td class="paramname"><em>_orient</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the bat's orientation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_orient</td><td>the new orientation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a00e563db4fad9c3a90eb72b5e5e68bc9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bat::setpushA </td>
+          <td>(</td>
+          <td class="paramtype">const ngl::Vec3&#160;</td>
+          <td class="paramname"><em>_pushA</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the bat's push-controlled acceleration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_pushA</td><td>the new acceleration </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a17b4c6b2b70a2800a952e16022f47820"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bat::setPushPos </td>
+          <td>(</td>
+          <td class="paramtype">const ngl::Vec3&#160;</td>
+          <td class="paramname"><em>_pushPos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the bat's push-controlled position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_pushPos</td><td>the new position </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7e7c34ffd00a351cbfbc0c4389bfa43e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bat::setPushV </td>
+          <td>(</td>
+          <td class="paramtype">const ngl::Vec3&#160;</td>
+          <td class="paramname"><em>_pushV</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the bat's push-controlled velocity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_pushV</td><td>the new velocity </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac7afffdf395f73c1ac05092a81fa863e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bat::setRadius </td>
+          <td>(</td>
+          <td class="paramtype">const ngl::Real&#160;</td>
+          <td class="paramname"><em>_r</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the bat's radius. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_r</td><td>the new radius </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_bat_8h_source.html">Bat.h</a></li>
-<li>include/bat.cpp</li>
+<li>src/Bat.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

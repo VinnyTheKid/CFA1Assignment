@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.10"/>
-<title>CFA1 Assignment: include/Bat.h Source File</title>
+<title>Dink!: include/Bat.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,9 +23,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">CFA1 Assignment
+   <div id="projectname">Dink!
    </div>
-   <div id="projectbrief">Dink! game - Vincent Clifton</div>
+   <div id="projectbrief">A simple physics based game by Vincent Clifton</div>
   </td>
  </tr>
  </tbody>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Bat.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef BAT_H</span></div>
+<a href="_bat_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef BAT_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define BAT_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;ngl/Camera.h&gt;</span></div>
@@ -97,59 +97,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;ngl/Transformation.h&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;ngl/Material.h&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_bat.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_bat.html">Bat</a></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span> :</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="class_bat.html">Bat</a>();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">void</span> draw(  <span class="keyword">const</span> std::string &amp;_shader, ngl::Camera *_cam );</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> setMousePos(  <span class="keyword">const</span> ngl::Vec3 _mousePos){m_mousePos = _mousePos;}</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> setMouseV(  <span class="keyword">const</span> ngl::Vec3 _mouseV){m_mouseV = _mouseV;}</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> setNormal( <span class="keyword">const</span> ngl::Vec3 _normal) {m_normal = _normal;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> setRadius( <span class="keyword">const</span> ngl::Real _r) {m_r=_r;}</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> setPushV(   <span class="keyword">const</span> ngl::Vec3 _pushV) {m_pushV=_pushV;}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> setPushA(   <span class="keyword">const</span> ngl::Vec3 _pushA) {m_pushA=_pushA;}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> setPushPos(   <span class="keyword">const</span> ngl::Vec3 _pushPos) {m_pushPos=_pushPos;}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> setOrient(<span class="keyword">const</span> ngl::Vec3 _orient){m_orientation = _orient;}</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">inline</span> ngl::Vec3 getPos() {<span class="keywordflow">return</span> m_pos;}</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">inline</span> ngl::Vec3 getMousePos(){<span class="keywordflow">return</span> m_mousePos;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">inline</span> ngl::Vec3 getMouseV(){<span class="keywordflow">return</span> m_mouseV;}</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">inline</span> ngl::Vec3 getNormal() {<span class="keywordflow">return</span> m_normal;}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keyword">inline</span> ngl::Real getRadius()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_r;}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keyword">inline</span> ngl::Vec3 getPushV() {<span class="keywordflow">return</span> m_pushV;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">inline</span> ngl::Vec3 getPushA() {<span class="keywordflow">return</span> m_pushA;}</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keyword">inline</span> ngl::Vec3 getPushPos() {<span class="keywordflow">return</span> m_pushPos;}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">inline</span> std::string getPush() {<span class="keywordflow">return</span> m_push;}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">inline</span> ngl::Material getMaterial() {<span class="keywordflow">return</span> m_material;}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keyword">inline</span> ngl::Real getPushDist(){<span class="keywordflow">return</span> m_pushDist;}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">void</span> pushStart();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">void</span> pushPeak();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">void</span> pushStop();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  ngl::Vec3 m_pos;<span class="comment">//the true position from origin</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  ngl::Vec3 m_mousePos;<span class="comment">//the position controlled by the mouse</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  ngl::Vec3 m_pushPos;<span class="comment">//the position controlled by the push command</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  ngl::Vec3 m_mouseV;<span class="comment">//the velocity controlled by the mouse</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  ngl::Vec3 m_pushV;<span class="comment">//the velocity controlled by the push command</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  ngl::Vec3 m_pushA;<span class="comment">//the acceleration when push command called</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  ngl::Real m_r;<span class="comment">//the circle radius for collision detection</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  ngl::Obj *m_mesh; <span class="comment">//the obj file pointer</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  ngl::Transformation m_mouseTransform;<span class="comment">//transform stack for mouse movements</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  ngl::Transformation m_orientTransform;<span class="comment">//transform stack for bat rotation</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  ngl::Transformation m_pushTransform;<span class="comment">//transform stack for push command</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  ngl::Transformation m_transform;<span class="comment">//transform stack for final drawing</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  ngl::Vec3 m_orientation;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  ngl::Vec3 m_normal;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  ngl::Material m_material;<span class="comment">//the material to be used when rendering</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  ngl::Real m_pushDist;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  std::string m_push;<span class="comment">//flag to indicate whether a push is already occuring</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif // BAT_H</span></div>
-<div class="ttc" id="class_bat_html"><div class="ttname"><a href="class_bat.html">Bat</a></div><div class="ttdef"><b>Definition:</b> Bat.h:10</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//----------------------------------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"></span><span class="comment">//----------------------------------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_bat.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_bat.html">Bat</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span> :</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <a class="code" href="class_bat.html#ac231b3a270f82b72dace8be983a6ee6c">Bat</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_bat.html#a243a43c23e389b55cb85167fdf657ceb">   27</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_bat.html#a243a43c23e389b55cb85167fdf657ceb">setMousePos</a>(  <span class="keyword">const</span> ngl::Vec3 _mousePos){m_mousePos = _mousePos;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_bat.html#a17b4c6b2b70a2800a952e16022f47820">   30</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_bat.html#a17b4c6b2b70a2800a952e16022f47820">setPushPos</a>(  <span class="keyword">const</span> ngl::Vec3 _pushPos){m_pushPos = _pushPos;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_bat.html#a7e7c34ffd00a351cbfbc0c4389bfa43e">   33</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_bat.html#a7e7c34ffd00a351cbfbc0c4389bfa43e">setPushV</a>(  <span class="keyword">const</span> ngl::Vec3 _pushV){m_pushV = _pushV;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_bat.html#a00e563db4fad9c3a90eb72b5e5e68bc9">   36</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_bat.html#a00e563db4fad9c3a90eb72b5e5e68bc9">setpushA</a>(  <span class="keyword">const</span> ngl::Vec3 _pushA){m_pushA = _pushA;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_bat.html#a701c00889957e06bd4e78f8e5bc2ec85">   39</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_bat.html#a701c00889957e06bd4e78f8e5bc2ec85">setNormal</a>( <span class="keyword">const</span> ngl::Vec3 _normal) {m_normal = _normal;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_bat.html#acfdb8dcdc698f12a950911f4f7c21995">   42</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_bat.html#acfdb8dcdc698f12a950911f4f7c21995">setOrient</a>(<span class="keyword">const</span> ngl::Vec3 _orient){m_orientation = _orient;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_bat.html#ac7afffdf395f73c1ac05092a81fa863e">   45</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_bat.html#ac7afffdf395f73c1ac05092a81fa863e">setRadius</a>( <span class="keyword">const</span> ngl::Real _r) {m_r=_r;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_bat.html#a7df35992554d7beddebfc3d1a2284891">   47</a></span>&#160;  <span class="keyword">inline</span> ngl::Vec3 <a class="code" href="class_bat.html#a7df35992554d7beddebfc3d1a2284891">getPos</a>() {<span class="keywordflow">return</span> m_pos;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_bat.html#a84a84c1eaa37f6221282953f93e5b3d8">   49</a></span>&#160;  <span class="keyword">inline</span> ngl::Vec3 <a class="code" href="class_bat.html#a84a84c1eaa37f6221282953f93e5b3d8">getMousePos</a>(){<span class="keywordflow">return</span> m_mousePos;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_bat.html#a5d2038c9c42d793441795a15c0b0ffce">   51</a></span>&#160;  <span class="keyword">inline</span> ngl::Vec3 <a class="code" href="class_bat.html#a5d2038c9c42d793441795a15c0b0ffce">getMouseV</a>(){<span class="keywordflow">return</span> m_mouseV;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_bat.html#a552c9c5dc6e2fb8e1b3b3ab180d80605">   53</a></span>&#160;  <span class="keyword">inline</span> ngl::Vec3 <a class="code" href="class_bat.html#a552c9c5dc6e2fb8e1b3b3ab180d80605">getNormal</a>() {<span class="keywordflow">return</span> m_normal;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_bat.html#a29a52a25985df48a46eca5079e354853">   55</a></span>&#160;  <span class="keyword">inline</span> ngl::Vec3 <a class="code" href="class_bat.html#a29a52a25985df48a46eca5079e354853">getPushV</a>() {<span class="keywordflow">return</span> m_pushV;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_bat.html#afe01a9ede9e614596f408c894e03ca5a">   57</a></span>&#160;  <span class="keyword">inline</span> ngl::Vec3 <a class="code" href="class_bat.html#afe01a9ede9e614596f408c894e03ca5a">getPushA</a>() {<span class="keywordflow">return</span> m_pushA;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_bat.html#a8ac591209afc830d5f3a904d73efc9bb">   59</a></span>&#160;  <span class="keyword">inline</span> ngl::Vec3 <a class="code" href="class_bat.html#a8ac591209afc830d5f3a904d73efc9bb">getPushPos</a>() {<span class="keywordflow">return</span> m_pushPos;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_bat.html#a0a4545f994b1f26ac9ebd1043f0fcb91">   61</a></span>&#160;  <span class="keyword">inline</span> ngl::Real <a class="code" href="class_bat.html#a0a4545f994b1f26ac9ebd1043f0fcb91">getRadius</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_r;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_bat.html#a2b91b886a5416294f9a75ea452148b28">   63</a></span>&#160;  <span class="keyword">inline</span> std::string <a class="code" href="class_bat.html#a2b91b886a5416294f9a75ea452148b28">getPush</a>() {<span class="keywordflow">return</span> m_push;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_bat.html#a6b799c54fff78b0088831573bb7357bb">   65</a></span>&#160;  <span class="keyword">inline</span> ngl::Real <a class="code" href="class_bat.html#a6b799c54fff78b0088831573bb7357bb">getPushDist</a>(){<span class="keywordflow">return</span> m_pushDist;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_bat.html#a07907b3c6e056575b2b20fcbf2d6c679">draw</a>(  <span class="keyword">const</span> std::string &amp;_shader, ngl::Camera *_cam );</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_bat.html#a6012876b0637a7867b3256296dd74f48">pushStart</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_bat.html#a2e9d58e022c3a3871c66a35b6e150740">pushPeak</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_bat.html#a9e29871261f3bfec5c8cc5f5e2805815">pushStop</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  ngl::Vec3 m_pos;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  ngl::Vec3 m_mousePos;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  ngl::Vec3 m_mouseV;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  ngl::Vec3 m_pushPos;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  ngl::Vec3 m_pushV;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  ngl::Vec3 m_pushA;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  ngl::Real m_r;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  ngl::Obj *m_mesh;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  ngl::Transformation m_mouseTransform;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  ngl::Transformation m_orientTransform;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  ngl::Transformation m_pushTransform;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  ngl::Transformation m_transform;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  ngl::Vec3 m_orientation;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  ngl::Vec3 m_normal;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  ngl::Real m_pushDist;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  std::string m_push;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;};</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#endif // BAT_H</span></div>
+<div class="ttc" id="class_bat_html_a00e563db4fad9c3a90eb72b5e5e68bc9"><div class="ttname"><a href="class_bat.html#a00e563db4fad9c3a90eb72b5e5e68bc9">Bat::setpushA</a></div><div class="ttdeci">void setpushA(const ngl::Vec3 _pushA)</div><div class="ttdoc">Sets the bat&#39;s push-controlled acceleration. </div><div class="ttdef"><b>Definition:</b> Bat.h:36</div></div>
+<div class="ttc" id="class_bat_html_acfdb8dcdc698f12a950911f4f7c21995"><div class="ttname"><a href="class_bat.html#acfdb8dcdc698f12a950911f4f7c21995">Bat::setOrient</a></div><div class="ttdeci">void setOrient(const ngl::Vec3 _orient)</div><div class="ttdoc">Sets the bat&#39;s orientation. </div><div class="ttdef"><b>Definition:</b> Bat.h:42</div></div>
+<div class="ttc" id="class_bat_html_ac231b3a270f82b72dace8be983a6ee6c"><div class="ttname"><a href="class_bat.html#ac231b3a270f82b72dace8be983a6ee6c">Bat::Bat</a></div><div class="ttdeci">Bat()</div><div class="ttdoc">ctor </div><div class="ttdef"><b>Definition:</b> Bat.cpp:6</div></div>
+<div class="ttc" id="class_bat_html_a17b4c6b2b70a2800a952e16022f47820"><div class="ttname"><a href="class_bat.html#a17b4c6b2b70a2800a952e16022f47820">Bat::setPushPos</a></div><div class="ttdeci">void setPushPos(const ngl::Vec3 _pushPos)</div><div class="ttdoc">Sets the bat&#39;s push-controlled position. </div><div class="ttdef"><b>Definition:</b> Bat.h:30</div></div>
+<div class="ttc" id="class_bat_html_a2e9d58e022c3a3871c66a35b6e150740"><div class="ttname"><a href="class_bat.html#a2e9d58e022c3a3871c66a35b6e150740">Bat::pushPeak</a></div><div class="ttdeci">void pushPeak()</div><div class="ttdoc">initiated when bat has reached push limit </div><div class="ttdef"><b>Definition:</b> Bat.cpp:69</div></div>
+<div class="ttc" id="class_bat_html_a2b91b886a5416294f9a75ea452148b28"><div class="ttname"><a href="class_bat.html#a2b91b886a5416294f9a75ea452148b28">Bat::getPush</a></div><div class="ttdeci">std::string getPush()</div><div class="ttdoc">returns a flag for the state of the push command </div><div class="ttdef"><b>Definition:</b> Bat.h:63</div></div>
+<div class="ttc" id="class_bat_html_a9e29871261f3bfec5c8cc5f5e2805815"><div class="ttname"><a href="class_bat.html#a9e29871261f3bfec5c8cc5f5e2805815">Bat::pushStop</a></div><div class="ttdeci">void pushStop()</div><div class="ttdoc">completes the push and returns mouse control </div><div class="ttdef"><b>Definition:</b> Bat.cpp:62</div></div>
+<div class="ttc" id="class_bat_html_a7e7c34ffd00a351cbfbc0c4389bfa43e"><div class="ttname"><a href="class_bat.html#a7e7c34ffd00a351cbfbc0c4389bfa43e">Bat::setPushV</a></div><div class="ttdeci">void setPushV(const ngl::Vec3 _pushV)</div><div class="ttdoc">Sets the bat&#39;s push-controlled velocity. </div><div class="ttdef"><b>Definition:</b> Bat.h:33</div></div>
+<div class="ttc" id="class_bat_html_a7df35992554d7beddebfc3d1a2284891"><div class="ttname"><a href="class_bat.html#a7df35992554d7beddebfc3d1a2284891">Bat::getPos</a></div><div class="ttdeci">ngl::Vec3 getPos()</div><div class="ttdoc">returns the bat&#39;s true global position </div><div class="ttdef"><b>Definition:</b> Bat.h:47</div></div>
+<div class="ttc" id="class_bat_html_ac7afffdf395f73c1ac05092a81fa863e"><div class="ttname"><a href="class_bat.html#ac7afffdf395f73c1ac05092a81fa863e">Bat::setRadius</a></div><div class="ttdeci">void setRadius(const ngl::Real _r)</div><div class="ttdoc">Sets the bat&#39;s radius. </div><div class="ttdef"><b>Definition:</b> Bat.h:45</div></div>
+<div class="ttc" id="class_bat_html_a6b799c54fff78b0088831573bb7357bb"><div class="ttname"><a href="class_bat.html#a6b799c54fff78b0088831573bb7357bb">Bat::getPushDist</a></div><div class="ttdeci">ngl::Real getPushDist()</div><div class="ttdoc">returns the limit of the reach of a push </div><div class="ttdef"><b>Definition:</b> Bat.h:65</div></div>
+<div class="ttc" id="class_bat_html_a84a84c1eaa37f6221282953f93e5b3d8"><div class="ttname"><a href="class_bat.html#a84a84c1eaa37f6221282953f93e5b3d8">Bat::getMousePos</a></div><div class="ttdeci">ngl::Vec3 getMousePos()</div><div class="ttdoc">returns the bat&#39;s mouse-controlled position </div><div class="ttdef"><b>Definition:</b> Bat.h:49</div></div>
+<div class="ttc" id="class_bat_html_a6012876b0637a7867b3256296dd74f48"><div class="ttname"><a href="class_bat.html#a6012876b0637a7867b3256296dd74f48">Bat::pushStart</a></div><div class="ttdeci">void pushStart()</div><div class="ttdoc">initiates the push command </div><div class="ttdef"><b>Definition:</b> Bat.cpp:56</div></div>
+<div class="ttc" id="class_bat_html_a701c00889957e06bd4e78f8e5bc2ec85"><div class="ttname"><a href="class_bat.html#a701c00889957e06bd4e78f8e5bc2ec85">Bat::setNormal</a></div><div class="ttdeci">void setNormal(const ngl::Vec3 _normal)</div><div class="ttdoc">Sets the bat&#39;s normal vector. </div><div class="ttdef"><b>Definition:</b> Bat.h:39</div></div>
+<div class="ttc" id="class_bat_html_a8ac591209afc830d5f3a904d73efc9bb"><div class="ttname"><a href="class_bat.html#a8ac591209afc830d5f3a904d73efc9bb">Bat::getPushPos</a></div><div class="ttdeci">ngl::Vec3 getPushPos()</div><div class="ttdoc">returns the bat&#39;s push-controlled position </div><div class="ttdef"><b>Definition:</b> Bat.h:59</div></div>
+<div class="ttc" id="class_bat_html_a29a52a25985df48a46eca5079e354853"><div class="ttname"><a href="class_bat.html#a29a52a25985df48a46eca5079e354853">Bat::getPushV</a></div><div class="ttdeci">ngl::Vec3 getPushV()</div><div class="ttdoc">returns the bat&#39;s push-controlled velocity </div><div class="ttdef"><b>Definition:</b> Bat.h:55</div></div>
+<div class="ttc" id="class_bat_html_a5d2038c9c42d793441795a15c0b0ffce"><div class="ttname"><a href="class_bat.html#a5d2038c9c42d793441795a15c0b0ffce">Bat::getMouseV</a></div><div class="ttdeci">ngl::Vec3 getMouseV()</div><div class="ttdoc">returns the bat&#39;s mouse-controlled velocity </div><div class="ttdef"><b>Definition:</b> Bat.h:51</div></div>
+<div class="ttc" id="class_bat_html_afe01a9ede9e614596f408c894e03ca5a"><div class="ttname"><a href="class_bat.html#afe01a9ede9e614596f408c894e03ca5a">Bat::getPushA</a></div><div class="ttdeci">ngl::Vec3 getPushA()</div><div class="ttdoc">returns the bat&#39;s push-controlled acceleration </div><div class="ttdef"><b>Definition:</b> Bat.h:57</div></div>
+<div class="ttc" id="class_bat_html_a07907b3c6e056575b2b20fcbf2d6c679"><div class="ttname"><a href="class_bat.html#a07907b3c6e056575b2b20fcbf2d6c679">Bat::draw</a></div><div class="ttdeci">void draw(const std::string &amp;_shader, ngl::Camera *_cam)</div><div class="ttdoc">draws the bat </div><div class="ttdef"><b>Definition:</b> Bat.cpp:37</div></div>
+<div class="ttc" id="class_bat_html_a243a43c23e389b55cb85167fdf657ceb"><div class="ttname"><a href="class_bat.html#a243a43c23e389b55cb85167fdf657ceb">Bat::setMousePos</a></div><div class="ttdeci">void setMousePos(const ngl::Vec3 _mousePos)</div><div class="ttdoc">Sets the bat&#39;s mouse-controlled position. </div><div class="ttdef"><b>Definition:</b> Bat.h:27</div></div>
+<div class="ttc" id="class_bat_html_a0a4545f994b1f26ac9ebd1043f0fcb91"><div class="ttname"><a href="class_bat.html#a0a4545f994b1f26ac9ebd1043f0fcb91">Bat::getRadius</a></div><div class="ttdeci">ngl::Real getRadius() const </div><div class="ttdoc">returns the bat&#39;s radius </div><div class="ttdef"><b>Definition:</b> Bat.h:61</div></div>
+<div class="ttc" id="class_bat_html_a552c9c5dc6e2fb8e1b3b3ab180d80605"><div class="ttname"><a href="class_bat.html#a552c9c5dc6e2fb8e1b3b3ab180d80605">Bat::getNormal</a></div><div class="ttdeci">ngl::Vec3 getNormal()</div><div class="ttdoc">returns the bat&#39;s normal </div><div class="ttdef"><b>Definition:</b> Bat.h:53</div></div>
+<div class="ttc" id="class_bat_html"><div class="ttname"><a href="class_bat.html">Bat</a></div><div class="ttdoc">The Bat class, used to define the bat&#39;s attributes and access methods. </div><div class="ttdef"><b>Definition:</b> Bat.h:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
