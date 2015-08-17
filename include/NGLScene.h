@@ -22,6 +22,8 @@
 /// @brief our main glwindow widget for NGL applications all drawing elements are
 /// put in this file
 
+
+//----------------------------------------------------------------------------------------------------------------------
 /// @brief the distance seperating the bat from the extents of the box
 //----------------------------------------------------------------------------------------------------------------------
 const static ngl::Real s_batGap = 10, s_gravity = 0.02;

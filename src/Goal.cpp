@@ -5,26 +5,19 @@
 #include <stdlib.h>
 #include <time.h>
 
+const static ngl::Real s_DIFFINCREMENT = 0.1;
+
 Goal::Goal()
 {
   m_pos = (0,0,0);
   m_scale = 1;
   m_r = 8 * m_scale;
-  m_source= "models/goal.obj";
-  m_mesh = new ngl::Obj(m_source);
+  m_mesh = new ngl::Obj("models/goal.obj");
   m_orientation = (0,0,0);
   m_mesh->createVAO();
-  srand(time(NULL));
-}
-void Goal::setPosition(     const ngl::Vec3 _pos, const ngl::Vec3 _orient)
-{
-  m_pos = _pos;
-  m_orientation = _orient;
-}
+  m_difficultyLevel = 1;
 
-void Goal::setRadius (    const ngl::Real _r)
-{
-  m_r = _r;
+  srand(time(NULL));
 }
 
 void Goal::draw(const std::string &_shader, ngl::Camera *_cam )
@@ -63,3 +56,11 @@ void Goal::generatePos(ngl::Real _boxWidth, ngl::Real _boxHeight, ngl::Real _box
 
 }
 
+void Goal::increaseDifficulty(const int _currentScore)
+{
+  int mod = _currentscore%5;
+  if(mod == 0)
+  {
+    m_scale -= s_DIFFINCREMENT;
+  }
+}

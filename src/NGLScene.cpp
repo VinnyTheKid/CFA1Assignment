@@ -61,18 +61,19 @@ void NGLScene::resizeEvent(QResizeEvent *_event )
 
 void NGLScene::initialize()
 {
-
+  //INITIALIZATION
   ngl::NGLInit::instance();
 
-  glClearColor(1.0f, 1.0f, 1.0f, 1.0f);			   //Plain White Background
+  //create a plain white background
+  glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
+  //GL settings
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_MULTISAMPLE);
-  //shader setup
+
+  //SHADER SETUP
   ngl::ShaderLib *shader=ngl::ShaderLib::instance();
-
   shader->createShaderProgram("Phong");
-
   shader->attachShader("PhongVertex",ngl::VERTEX);
   shader->attachShader("PhongFragment",ngl::FRAGMENT);
   shader->loadShaderSource("PhongVertex","shaders/PhongVertex.glsl");
@@ -86,52 +87,59 @@ void NGLScene::initialize()
   shader->bindAttribute("Phong",2,"inNormal");
   shader->linkProgramObject("Phong");
 
+  //use the setup shaders
   (*shader)["Phong"]->use();
 
-  //camera setup
+  //CAMERA SETUP
   ngl::Vec3 from(0,-2,-40);
   ngl::Vec3 to(0,0,0);
   ngl::Vec3 up(0,1,0);
-
+  //create camera instance
   m_cam= new ngl::Camera(from,to,up);
-
+  //set camera attributes
   m_cam->setShape(45.0f,(float)720.0/576.0f,0.05f,350.0f);
   shader->setShaderParam3f("viewerPos",m_cam->getEye().m_x,m_cam->getEye().m_y,m_cam->getEye().m_z);
 
-  //directional white light setup
+  //LIGHTING SETUP
   m_light = new ngl::Light(ngl::Vec3(-3,-3,4),ngl::Colour(1,1,1,1),ngl::Colour(1,1,1,1),ngl::DIRECTIONALLIGHT );
   ngl::Mat4 iv=m_cam->getViewMatrix();
   iv.transpose();
   m_light->setTransform(iv);
   m_light->loadToShader("light");
 
-  glViewport(0,0,width()*devicePixelRatio(),height()*devicePixelRatio());
-
+  //SCENE SETUP
+  //create text instance
   m_text = new ngl::Text (QFont("Arial", 16));
+  //set text attributes
   m_text->setScreenSize(width(),height());
   m_text->setColour(0.2f,0.2f,0.2f);
-
+  //create box instance
   m_box = new Box();
+
+  //retrieve box attributes for use with other class instances
   ngl::Real boxWidth, boxHeight, boxDepth;
   boxWidth = m_box->getWidth();
   boxHeight = m_box->getHeight();
   boxDepth = m_box->getDepth();
 
+  //create ball instance
   m_ball = new Ball();
-  //m_ball->generatePos();
+  //generate ball attributes
   m_ball->generatePos(boxWidth);
-  // m_ball->generateVel();
   m_ball->generateVel();
 
+  //create goal instance
   m_goal = new Goal();
-  //m_goal->generatePos();
+  //generate goal attributes
   m_goal->generatePos(boxWidth,boxHeight,boxDepth);
 
-
+  //create bat intance
   m_bat = new Bat ();
+  //set bat's inital position
   m_bat->setMousePos(m_batPos);
 
-  glViewport(0,0,width(),height());
+  //VIEWPORT SETUP
+  glViewport(0,0,width()*devicePixelRatio(),height()*devicePixelRatio());
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -151,27 +159,33 @@ void NGLScene::render()
   // clear the screen and depth buffer
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  //drawScene(m_dink->getGameState(),"Phong");
+  //create a shader instance to be used for drawing
   ngl::ShaderLib *shader=ngl::ShaderLib::instance();
   (*shader)["Phong"]->use();
 
+  //a single material will be used to draw each object in turn while having its properties set
 
+  //draw the box
   ngl::Material m(ngl::CHROME);
   m.loadToShader("material");
   m_box->draw("Phong",m_cam);
 
+  //draw the ball
   m.set(m_ball->getMaterial());
   m.loadToShader("material");
   m_ball->draw("Phong",m_cam);
 
+  //draw the goal
   m.set(ngl::BRASS);
   m.loadToShader("material");
   m_goal->draw("Phong",m_cam);
 
+  //draw the bat
   m.set(ngl::GOLD);
   m.loadToShader("material");
   m_bat->draw("Phong",m_cam);
 
+  //draw the score
   (*shader)["nglTextShader"]->use();
   QString score = QString::number(m_currentScore);
   QString scoreText = "Score: "+score;
@@ -183,18 +197,16 @@ void NGLScene::render()
 
 //----------------------------------------------------------------------------------------------------------------------
 void NGLScene::mouseMoveEvent (QMouseEvent * _event)
-
-
 {
+  //use the cursor position to update m_batPos
   if(m_batMove && _event->buttons() == Qt::NoButton)
-
   {
     int w=1024;
     int h=720;
     int offsetX = _event->x() - (w/2);
     int offsetY = _event->y() - (h/2);
 
-    ngl::Real x = offsetX*-s_INCREMENT;//<--------------MAKE STATIC
+    ngl::Real x = offsetX*-s_INCREMENT;
     ngl::Real y = offsetY*-s_INCREMENT;
     ngl::Real z = -(15+s_batGap);
     m_batPos.set(x,y,z);
@@ -206,6 +218,7 @@ void NGLScene::mouseMoveEvent (QMouseEvent * _event)
 //----------------------------------------------------------------------------------------------------------------------
 void NGLScene::mousePressEvent ( QMouseEvent * _event)
 {
+  //when LMB pressed start a push and disable movement
   if(m_batMove && _event->button() == Qt::LeftButton)
   {
     m_bat->pushStart();
@@ -223,31 +236,34 @@ void NGLScene::updateBat()
   //update the normal based on ball m_pos
   if (m_batPush == false)
   {
-    //initialize for bat normal maths
-    ngl::Vec3 newNormal;
+    //initialize variables
+    ngl::Vec3 newNormal, batOrient;
     ngl::Vec3 ballPos = m_ball->getPosition();
+    ngl::Real tanThetaX, thetaXr,thetaXd;
+    ngl::Real tanThetaY, thetaYr,thetaYd;
+
     //calulate the bat's new normal vector
     newNormal.set(ballPos - m_batPos);
     newNormal.normalize();
     m_bat->setNormal(newNormal);
-    //initialize for bat orientation maths
-    //for x rotation
-    ngl::Real tanThetaX, thetaXr,thetaXd;
+
+    //x rotation component
     tanThetaX = newNormal.m_y/newNormal.m_z;
     thetaXr = atan(tanThetaX);
     thetaXd = thetaXr*(180/M_PI);
-    //for y rotation
-    ngl::Real tanThetaY, thetaYr,thetaYd;
+
+    //y rotation component
     tanThetaY = newNormal.m_x/newNormal.m_z;
     thetaYr = atan(tanThetaY);
     thetaYd = thetaYr*(180/M_PI);
+
     //Use the components to set the bat orientation
-    ngl::Vec3 batOrient;
     batOrient.set(ngl::Vec3(-thetaXd,thetaYd,0));
     m_bat->setOrient(batOrient);
   }
   else
   {
+    //initialize variables
     ngl::Vec3 pushV, pushA, pushPos, newPushV,newPushPos;
     ngl::Real pushDist = m_bat->getPushDist();
     pushV.set(m_bat->getPushV());
@@ -256,6 +272,8 @@ void NGLScene::updateBat()
     newPushPos.set(ngl::Vec3(pushPos+pushV));
     m_bat->setPushV(newPushV);
     m_bat->setPushPos(newPushPos);
+
+    //determine which stage of push and use to define bat attriibutes through push methods
     if (pushPos.m_z >= pushDist)
     {
       m_bat->pushPeak();
@@ -274,13 +292,13 @@ void NGLScene::updateBall()
   //check for collisions
   wallCollision();
   batCollision();
-  //update the ball position
 
-  //this will change pos by an increment dictated by the velocity
+  //this will change the balls velocity by an increment s_gravity
   ngl::Vec3 oldVel = m_ball->getVelocity();
   ngl::Vec3 newVel = oldVel - (ngl::Vec3(0,s_gravity,0));//0.02
   m_ball->setVelocity(newVel);
 
+  //this will update the position dictated by the velocity
   ngl::Vec3 oldPos = m_ball->getPosition();
   ngl::Vec3 newPos = (oldPos + newVel);
   m_ball->setPosition(newPos);
@@ -292,33 +310,39 @@ void NGLScene::updateBall()
 
 void NGLScene::wallCollision()
 {
+  //initialize variables
   ngl::Vec3 pos = m_ball->getPosition();
   ngl::Real x = pos.m_x, y = pos.m_y, z = pos.m_z, r = m_ball->getRadius();
   ngl::Real width = m_box->getWidth(),height = m_box->getHeight(),depth=m_box->getDepth();
+  //check the different extents of the box
+  //for left and right walls, deflect
   if(x >= ((width/2)-r) || x <= (r-(width/2)))
   {
     ngl::Vec3 oldVel = m_ball->getVelocity();
     ngl::Vec3 newVel = oldVel * ngl::Vec3(-1,1,1);
-    m_ball->setVelocity(newVel);//SIDE
+    m_ball->setVelocity(newVel);
   }
+  //for the back wall, check for a goal collision. Otherwise deflect ball
   else if( z >= (depth/2)-r)
   {
-    goalCollision();//BACK
+    goalCollision();
   }
+  //for the player missing the ball, reset score and restart
   else if( z <= -((depth/2)+s_batGap))
   {
     m_currentScore = 0;
     m_ball->generatePos(width);
     m_ball->generateVel();
     m_goal->generatePos(width,height,depth);
-
   }
+  //for the ceiling, deflect
   else if( y >= (height/2)-r)
   {
     ngl::Vec3 oldVel = m_ball->getVelocity();
     ngl::Vec3 newVel = oldVel * ngl::Vec3(1,-1,1);
-    m_ball->setVelocity(newVel);//TOP
+    m_ball->setVelocity(newVel);
   }
+  //for the ground, reset score and restart
   else if( y <= r-(height/2))
   {
     m_currentScore = 0;
@@ -332,11 +356,13 @@ void NGLScene::wallCollision()
 
 void NGLScene::batCollision()
 {
+  //initalize varibles
   ngl::Real planeDistance,magPQ;
   ngl::Vec3 batPos, ballPos, vecPQ, batNormal;
   ngl::Real ballR = m_ball->getRadius();
   ngl::Real batR = m_bat->getRadius();
 
+  // work out the distance from the bat's centre and the distance from the bat's plane
   batPos = m_batPos;
   ballPos = m_ball->getPosition();
   batNormal = m_bat->getNormal();
@@ -344,7 +370,7 @@ void NGLScene::batCollision()
   planeDistance = vecPQ.dot(batNormal);
   magPQ = vecPQ.length();
 
-
+  //check for a collision. If so, deflect
   if(planeDistance <= ballR && magPQ <=batR)
   {
     ngl::Vec3 newVel, oldVel;
@@ -358,29 +384,31 @@ void NGLScene::batCollision()
 
 void NGLScene::goalCollision()
 {
+  //initialize varibles
   ngl::Vec3 PQ, goalPos, ballPos;
   ngl::Real distance, goalR;
-
   goalPos = m_goal->getPosition();
   ballPos = m_ball->getPosition();
-
   PQ = goalPos - ballPos;
   goalR = m_goal->getRadius();
   distance = PQ.length();
-
+  //check for collisions
   if(distance <= goalR)
   {
     ngl::Real boxWidth, boxHeight, boxDepth;
     boxWidth = m_box->getWidth();
     boxHeight = m_box->getHeight();
     boxDepth = m_box->getDepth();
-
+    //increase the score
+    //increase the difficult every 5 points
     m_currentScore ++;
     m_ball->generatePos(boxWidth);
     m_ball->generateVel();
     m_goal->generatePos(boxWidth,boxHeight,boxDepth);
+    m_goal->increaseDifficulty(m_currentScore);
   }
   else
+  //deflect
   {
     ngl::Vec3 oldVel = m_ball->getVelocity();
     ngl::Vec3 newVel = oldVel * ngl::Vec3(1,1,-1);
@@ -391,9 +419,9 @@ void NGLScene::goalCollision()
 
 void NGLScene::timerEvent( QTimerEvent *_event)
 {
+  //on each timer call update the objects before rendering the scene
   if (_event->timerId() == m_redrawTimer)
   {
-
     updateBall();
     updateBat();
     renderNow();
